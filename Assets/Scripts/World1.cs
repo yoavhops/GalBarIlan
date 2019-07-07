@@ -11,54 +11,80 @@ public enum World1State
     WaitForVoiceApprove = 3,
     WaitForVoiceApproveAgain = 31,
     SwimAway = 4,
+    NextWorld = 5,
 }
 
+public enum World2State
+{
+    ChangeScreens = 0,
+    WaitForClickOnStarFish = 1,
+    SealSwimAway = 2,
+    WaitForVoiceApprove = 3,
+    WaitForVoiceApproveAgain = 31,
+    SwimAway = 4,
+}
 
 public class World1 : MonoBehaviour
 {
-    public World1State World1State;
+    public int WorldNumber;
+    public int WorldStartNumber;
     public WorldState _currentWorldState;
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
-    private Dictionary<World1State, WorldState> EnumToState;
+
+    private Dictionary<int, Dictionary<int, WorldState>> WorldToStateDictionary;
+    private Dictionary<int, int> WorldToLastStateDictionary;
+
     public OnClick StarFishClickable;
 
     void Awake()
     {
         InitStates();
-        ChangeWorldState(World1State);
+
+        ChangeWorld();
+        ChangeWorldState(WorldStartNumber);
     }
 
     private void InitStates()
     {
-        EnumToState = new Dictionary<World1State, WorldState>()
+        WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
         {
-            {World1State.Introduction, new AnimationWorldState(
-                    this, World1State.Introduction, World1State.WaitForClickOnStarFish) },
+            {0, new Dictionary<int, WorldState>(){
+                    {
+                        (int) World1State.Introduction, new AnimationWorldState(
+                            this, (int)World1State.Introduction, (int)World1State.WaitForClickOnStarFish)
+                    },
 
-            {World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
-                    this, World1State.WaitForClickOnStarFish, World1State.SealSwimAway,
-                    StarFishClickable)
-            },
+                    {
+                        (int) World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
+                            this, (int)World1State.WaitForClickOnStarFish, (int)World1State.SealSwimAway,
+                            StarFishClickable)
+                    },
 
-            {World1State.SealSwimAway, new AnimationWorldState(
-                    this, World1State.SealSwimAway, World1State.WaitForVoiceApprove)
-            },
+                    {
+                        (int) World1State.SealSwimAway, new AnimationWorldState(
+                            this, (int)World1State.SealSwimAway, (int)World1State.WaitForVoiceApprove)
+                    },
 
-            {World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
-                    this, World1State.WaitForVoiceApprove, World1State.SwimAway, World1State.WaitForVoiceApproveAgain,
-                    new List<string>(){"yes", "okay", "ok"})
-            },
+                    {
+                        (int) World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
+                            this, World1State.WaitForVoiceApprove, World1State.SwimAway,
+                            World1State.WaitForVoiceApproveAgain,
+                            new List<string>() {"yes", "okay", "ok"})
+                    },
 
-            {World1State.WaitForVoiceApproveAgain, new AnimationWorldState(
-                    this, World1State.WaitForVoiceApproveAgain, World1State.WaitForVoiceApprove)
+                    {
+                        (int) World1State.WaitForVoiceApproveAgain, new AnimationWorldState(
+                            this, (int)World1State.WaitForVoiceApproveAgain, (int)World1State.WaitForVoiceApprove)
+                    },
+
+                    {
+                        (int) World1State.SwimAway, new AnimationWorldState(
+                            this, (int)World1State.SwimAway, (int)World1State.Introduction)
+                    }, //Set next state to Introduction temporarily
+                }
             },
-           
-            {World1State.SwimAway, new AnimationWorldState(
-                    this, World1State.SwimAway, World1State.Introduction)
-            }, //Set next state to Introduction temporarily
         };
-     
     }
 
     // Start is called before the first frame update
@@ -72,12 +98,40 @@ public class World1 : MonoBehaviour
     {
         
     }
+
+    private WorldState WorldEnumToState(int enumState)
+    {
+        return WorldToStateDictionary[WorldNumber][enumState];
+    }
+
+    private bool ShouldGoToNextWorld(int nextState)
+    {
+        return WorldToLastStateDictionary[WorldNumber] == nextState;
+    }
+
+    private void NextWorld()
+    {
+        WorldNumber++;
+        ChangeWorld();
+    }
+
+    private void ChangeWorld()
+    {
+        Animator.SetInteger("worldNum", WorldNumber);
+        ChangeWorldState(0);
+    }
     
-    public void ChangeWorldState(World1State newWorld1State)
+    public void ChangeWorldState(int newWorldState)
     {
         _currentWorldState?.FinishState();
-        World1State = newWorld1State;
-        _currentWorldState = EnumToState[newWorld1State];
+
+        if (ShouldGoToNextWorld(newWorldState))
+        {
+            NextWorld();
+            return;
+        }
+
+        _currentWorldState = WorldEnumToState(newWorldState);
         _currentWorldState.StartPart();
     }
 
@@ -96,7 +150,7 @@ public class World1 : MonoBehaviour
     /****** Part End*******/
     public void OnAnimationEventDone()
     {
-        EnumToState[World1State].OnAnimationEventDone();
+        _currentWorldState.OnAnimationEventDone();
     }
 
     /****** Testing *******/

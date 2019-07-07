@@ -5,11 +5,11 @@ using UnityEngine;
 
 public abstract class WorldState
 {
-    protected World1State _thisState;
-    protected World1State _nextState;
+    protected int _thisState;
+    protected int _nextState;
     protected World1 _world1;
 
-    protected WorldState(World1 world1, World1State myState, World1State NextState)
+    protected WorldState(World1 world1, int myState, int NextState)
     {
         _world1 = world1;
         _thisState = myState;
