@@ -47,6 +47,11 @@ public class World1 : MonoBehaviour
 
     private void InitStates()
     {
+        WorldToLastStateDictionary = new Dictionary<int, int>()
+        {
+            {0, (int)World1State.NextWorld},
+        };
+
         WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
         {
             {0, new Dictionary<int, WorldState>(){
@@ -80,7 +85,7 @@ public class World1 : MonoBehaviour
 
                     {
                         (int) World1State.SwimAway, new AnimationWorldState(
-                            this, (int)World1State.SwimAway, (int)World1State.Introduction)
+                            this, (int)World1State.SwimAway, (int)World1State.NextWorld)
                     }, //Set next state to Introduction temporarily
                 }
             },
