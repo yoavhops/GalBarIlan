@@ -15,7 +15,7 @@ public class RecordingCanvas : MonoBehaviour {
     private bool _isRecording;
 
     public Action<string> OnFinalResults;
-    public Action OnVoiceEndOfSpeech;
+    public Action OnFailureToRecord;
 
     public bool IsRecording
     {
@@ -101,7 +101,7 @@ public class RecordingCanvas : MonoBehaviour {
 	{
         Debug.LogError(error);
 	    IsRecording = false;
-	    OnVoiceEndOfSpeech();
+	    OnFailureToRecord();
     }
 
     public void StartRecording()

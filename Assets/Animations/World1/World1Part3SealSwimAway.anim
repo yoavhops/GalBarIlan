@@ -481,7 +481,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 36.133335
-    functionName: OnAnimationEventSealSwimAwayDone
+    functionName: OnAnimationEventDone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

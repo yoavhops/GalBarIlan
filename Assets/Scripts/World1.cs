@@ -13,17 +13,52 @@ public enum World1State
     SwimAway = 4,
 }
 
+
 public class World1 : MonoBehaviour
 {
     public World1State World1State;
+    public WorldState _currentWorldState;
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
+    private Dictionary<World1State, WorldState> EnumToState;
+    public OnClick StarFishClickable;
 
     void Awake()
     {
+        InitStates();
         ChangeWorldState(World1State);
-        RecordingCanvas.OnFinalResults += OnVoiceResults;
-        RecordingCanvas.OnVoiceEndOfSpeech += OnVoiceEndOfSpeech;
+    }
+
+    private void InitStates()
+    {
+        EnumToState = new Dictionary<World1State, WorldState>()
+        {
+            {World1State.Introduction, new AnimationWorldState(
+                    this, World1State.Introduction, World1State.WaitForClickOnStarFish) },
+
+            {World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
+                    this, World1State.WaitForClickOnStarFish, World1State.SealSwimAway,
+                    StarFishClickable)
+            },
+
+            {World1State.SealSwimAway, new AnimationWorldState(
+                    this, World1State.SealSwimAway, World1State.WaitForVoiceApprove)
+            },
+
+            {World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
+                    this, World1State.WaitForVoiceApprove, World1State.SwimAway, World1State.WaitForVoiceApproveAgain,
+                    new List<string>(){"yes", "okay", "ok"})
+            },
+
+            {World1State.WaitForVoiceApproveAgain, new AnimationWorldState(
+                    this, World1State.WaitForVoiceApproveAgain, World1State.WaitForVoiceApprove)
+            },
+           
+            {World1State.SwimAway, new AnimationWorldState(
+                    this, World1State.SwimAway, World1State.Introduction)
+            }, //Set next state to Introduction temporarily
+        };
+     
     }
 
     // Start is called before the first frame update
@@ -38,62 +73,31 @@ public class World1 : MonoBehaviour
         
     }
     
-    public void ChangeWorldState(World1State world1State)
+    public void ChangeWorldState(World1State newWorld1State)
     {
-        World1State = world1State;
-        ChangeAnimatorPart((int)World1State);
-
-        switch (world1State)
-        {
-            case World1State.WaitForVoiceApprove:
-                StartPartWaitForVoiceApprove();
-                break;
-        }
-
+        _currentWorldState?.FinishState();
+        World1State = newWorld1State;
+        _currentWorldState = EnumToState[newWorld1State];
+        _currentWorldState.StartPart();
     }
 
     public void ChangeAnimatorPart(int part)
     {
         Animator.SetInteger("Part", part);
+        Animator.SetTrigger("ChangeState");
     }
-
-
-
-    /**** voices handlers ***/
-
-    private void OnVoiceResults(string result)
-    {
-        switch (World1State)
-        {
-            case World1State.WaitForVoiceApprove:
-                if (string.Equals(result, "yes", StringComparison.OrdinalIgnoreCase))
-                {
-                    ChangeWorldState(World1State.SwimAway);
-                }
-                else
-                {
-                    ChangeWorldState(World1State.WaitForVoiceApproveAgain);
-                }
-                break;
-        }
-    }
-
-    private void OnVoiceEndOfSpeech()
-    {
-        if (World1State == World1State.WaitForVoiceApprove)
-        {
-            ChangeWorldState(World1State.WaitForVoiceApproveAgain);
-        }
-    }
-
-
-    /******* Parts Start **********/
-    private void StartPartWaitForVoiceApprove()
+   
+    public void StartRecording()
     {
         RecordingCanvas.StartRecording();
         TestingVoiceApprove();
     }
 
+    /****** Part End*******/
+    public void OnAnimationEventDone()
+    {
+        EnumToState[World1State].OnAnimationEventDone();
+    }
 
     /****** Testing *******/
     private bool _firstTestingVoiceApprove = true;
@@ -109,43 +113,15 @@ public class World1 : MonoBehaviour
             _firstTestingVoiceApprove = false;
             Utils.Singleton.ScaledInvoke(() =>
             {
-                OnVoiceResults("No");
+                RecordingCanvas.OnFinalResults("No");
             }, 3f);
         }
         else
         {
             Utils.Singleton.ScaledInvoke(() =>
             {
-                OnVoiceResults("Yes");
+                RecordingCanvas.OnFinalResults("Yes");
             }, 3f);
         }
     }
-
-
-
-    /****** Parts done******/
-
-    public void OnAnimationEventPart1Done()
-    {
-        ChangeWorldState(World1State.WaitForClickOnStarFish);
-    }
-
-    public void OnStarFishClicked()
-    {
-        if (World1State == World1State.WaitForClickOnStarFish)
-        {
-            ChangeWorldState(World1State.SealSwimAway);
-        }
-    }
-
-    public void OnAnimationEventSealSwimAwayDone()
-    {
-        ChangeWorldState(World1State.WaitForVoiceApprove);
-    }
-
-    public void OnAnimationEventWaitForVoiceApproveAgainDone()
-    {
-        ChangeWorldState(World1State.WaitForVoiceApprove);
-    }
-
-}
+} 
