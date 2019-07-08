@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class OnClick : MonoBehaviour
 {
-
-    public UnityEvent Callback;
     public Collider2D Collider2D;
     public Action OnClicked;
 
