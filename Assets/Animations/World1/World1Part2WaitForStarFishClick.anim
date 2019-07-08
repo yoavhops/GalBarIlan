@@ -49,7 +49,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: World1/StarFishHolder
+    path: StarFishHolder
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -67,7 +67,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: World1/StarFishHolder
+    path: StarFishHolder
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -79,14 +79,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 492828703
+      path: 2080461319
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 492828703
+      path: 2080461319
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -148,7 +148,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: World1/StarFishHolder
+    path: StarFishHolder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -185,7 +185,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: World1/StarFishHolder
+    path: StarFishHolder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -222,7 +222,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: World1/StarFishHolder
+    path: StarFishHolder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -241,7 +241,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: World1/StarFishHolder
+    path: StarFishHolder
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
