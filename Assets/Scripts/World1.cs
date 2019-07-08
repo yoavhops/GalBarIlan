@@ -26,8 +26,8 @@ public enum World2State
 
 public enum World4State
 {
-    ChangeScreens = 0,
-    SwimInAndAskAboutBoxes = 1,
+    SwimIns = 0,
+    AskAboutBoxes = 1,
     WaitForYes = 2,
     WaitForYesAgain = 21,
     ClickOnFirstBoxRequest = 3,
@@ -112,13 +112,13 @@ public class World1 : MonoBehaviour
 
             { 4, new Dictionary<int, WorldState>(){
                 {
-                    (int) World4State.ChangeScreens, new AnimationWorldState(
-                            this, (int)World4State.ChangeScreens, (int)World4State.SwimInAndAskAboutBoxes)
+                    (int) World4State.SwimIns, new AnimationWorldState(
+                            this, (int)World4State.SwimIns, (int)World4State.AskAboutBoxes)
                 },
 
                 {
-                    (int) World4State.SwimInAndAskAboutBoxes, new WaitForClickWorldState(
-                            this, (int)World4State.SwimInAndAskAboutBoxes, (int)World4State.WaitForYes,
+                    (int) World4State.AskAboutBoxes, new WaitForClickWorldState(
+                            this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes,
                             FirstBoxClickable   )
                 },
 
