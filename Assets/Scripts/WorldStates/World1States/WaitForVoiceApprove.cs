@@ -5,11 +5,11 @@ using System;
 
 public class WaitForVoiceApprove : WorldState
 {
-    private World1State _failureState;
+    private int _failureState;
     private List<string> _correctVoiceAnswers;
 
-    public WaitForVoiceApprove(World1 world1, World1State myState, World1State
-    NextState, World1State stateAfterFailure, List<string> correctVoiceAnswers) :
+    public WaitForVoiceApprove(World1 world1, int myState, int
+    NextState, int stateAfterFailure, List<string> correctVoiceAnswers) :
     base(world1, myState, NextState)
     {
         _failureState = stateAfterFailure;

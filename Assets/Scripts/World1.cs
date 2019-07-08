@@ -24,6 +24,24 @@ public enum World2State
     SwimAway = 4,
 }
 
+public enum World4State
+{
+    ChangeScreens = 0,
+    SwimInAndAskAboutBoxes = 1,
+    WaitForYes = 2,
+    WaitForYesAgain = 21,
+    ClickOnFirstBoxRequest = 3,
+    WaitForClickOnFirstBox = 4,
+    RepeatPassword = 5,
+    WaitForFirstPassword = 6,
+    WaitForFirstPasswordAgain = 61,
+    ClickOnSecondBoxRequest = 7,
+    WaitForSecondPassword = 8,
+    WaitForSecondPasswordAgain = 81,
+    SwimAway = 9,
+    NextWorld = 10,
+}
+
 public class World1 : MonoBehaviour
 {
     public int WorldNumber;
@@ -36,6 +54,8 @@ public class World1 : MonoBehaviour
     private Dictionary<int, int> WorldToLastStateDictionary;
 
     public OnClick StarFishClickable;
+    public OnClick FirstBoxClickable;
+    public OnClick SecondBoxClickable;
 
     void Awake()
     {
@@ -55,26 +75,26 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
         {
             {0, new Dictionary<int, WorldState>(){
-                    {
-                        (int) World1State.Introduction, new AnimationWorldState(
+                {
+                        (int)World1State.Introduction, new AnimationWorldState(
                             this, (int)World1State.Introduction, (int)World1State.WaitForClickOnStarFish)
-                    },
+                },
 
                     {
-                        (int) World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
+                        (int)World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
                             this, (int)World1State.WaitForClickOnStarFish, (int)World1State.SealSwimAway,
                             StarFishClickable)
                     },
 
                     {
-                        (int) World1State.SealSwimAway, new AnimationWorldState(
+                        (int)World1State.SealSwimAway, new AnimationWorldState(
                             this, (int)World1State.SealSwimAway, (int)World1State.WaitForVoiceApprove)
                     },
 
                     {
                         (int) World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
-                            this, World1State.WaitForVoiceApprove, World1State.SwimAway,
-                            World1State.WaitForVoiceApproveAgain,
+                            this, (int)World1State.WaitForVoiceApprove, (int)World1State.SwimAway,
+                            (int)World1State.WaitForVoiceApproveAgain,
                             new List<string>() {"yes", "okay", "ok"})
                     },
 
@@ -86,11 +106,96 @@ public class World1 : MonoBehaviour
                     {
                         (int) World1State.SwimAway, new AnimationWorldState(
                             this, (int)World1State.SwimAway, (int)World1State.NextWorld)
-                    }, //Set next state to Introduction temporarily
+                    },
                 }
             },
+
+            { 4, new Dictionary<int, WorldState>(){
+                {
+                    (int) World4State.ChangeScreens, new AnimationWorldState(
+                            this, (int)World4State.ChangeScreens, (int)World4State.SwimInAndAskAboutBoxes)
+                },
+
+                {
+                    (int) World4State.SwimInAndAskAboutBoxes, new WaitForClickWorldState(
+                            this, (int)World4State.SwimInAndAskAboutBoxes, (int)World4State.WaitForYes,
+                            FirstBoxClickable   )
+                },
+
+                {
+                    (int) World4State.WaitForYes, new WaitForVoiceApprove(
+                            this, (int)World4State.WaitForYes, (int)World4State.ClickOnFirstBoxRequest,
+                            (int)World4State.WaitForYesAgain,
+                            new List<string>() {"yes", "okay", "ok"})
+                },
+
+                {
+                    (int) World4State.WaitForYesAgain, new AnimationWorldState(
+                            this, (int)World4State.WaitForYesAgain, (int)World4State.WaitForYes)
+                },
+
+                {
+                    (int) World4State.ClickOnFirstBoxRequest, new AnimationWorldState(
+                            this, (int)World4State.ClickOnFirstBoxRequest, (int)World4State.WaitForClickOnFirstBox)
+                },
+
+                {
+                    (int) World4State.WaitForClickOnFirstBox, new WaitForClickWorldState(
+                            this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.NextWorld, FirstBoxClickable)
+                },
+
+                {
+                    (int) World4State.RepeatPassword, new AnimationWorldState(
+                            this, (int)World4State.RepeatPassword, (int)World4State.WaitForFirstPassword)
+                },
+
+                {
+                    (int) World4State.WaitForFirstPassword, new WaitForVoiceApprove(
+                            this, (int)World4State.WaitForFirstPassword, (int)World4State.ClickOnSecondBoxRequest,
+                            (int)World4State.WaitForFirstPasswordAgain,
+                            new List<string>() {"the dog barks in the garden"})
+                },
+
+                {
+                    (int) World4State.WaitForFirstPasswordAgain, new AnimationWorldState(
+                            this, (int)World4State.WaitForFirstPasswordAgain, (int)World4State.WaitForFirstPassword)
+                },
+
+                {
+                    (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
+                            this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
+                },
+
+                {
+                    (int) World4State.WaitForSecondPassword, new WaitForVoiceApprove(
+                            this, (int)World4State.WaitForSecondPassword, (int)World4State.SwimAway,
+                            (int)World4State.WaitForSecondPasswordAgain,
+                            new List<string>() {"the dog barks in the garden"})
+                },
+
+                {
+                    (int) World4State.WaitForSecondPasswordAgain, new AnimationWorldState(
+                            this, (int)World4State.WaitForSecondPasswordAgain, (int)World4State.SwimAway)
+                },
+
+                {
+                    (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
+                            this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
+                },
+
+
+                {
+                    (int) World4State.SwimAway, new AnimationWorldState(
+                            this, (int)World4State.SwimAway, (int)World4State.NextWorld)
+                },
+            }
+            }
         };
     }
+
+  
+   
+    
 
     // Start is called before the first frame update
     void Start()
