@@ -57,6 +57,9 @@ public class World1 : MonoBehaviour
     public OnClick FirstBoxClickable;
     public OnClick SecondBoxClickable;
 
+    private GameObject _currentWorld = null;
+    public List<GameObject> Worlds;
+
     void Awake()
     {
         InitStates();
@@ -177,13 +180,7 @@ public class World1 : MonoBehaviour
                     (int) World4State.WaitForSecondPasswordAgain, new AnimationWorldState(
                             this, (int)World4State.WaitForSecondPasswordAgain, (int)World4State.SwimAway)
                 },
-
-                {
-                    (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
-                            this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
-                },
-
-
+                
                 {
                     (int) World4State.SwimAway, new AnimationWorldState(
                             this, (int)World4State.SwimAway, (int)World4State.NextWorld)
@@ -227,7 +224,12 @@ public class World1 : MonoBehaviour
 
     private void ChangeWorld()
     {
-        Animator.SetInteger("worldNum", WorldNumber);
+        _currentWorld?.SetActive(false);
+        Worlds[WorldNumber].SetActive(true);
+        _currentWorld = Worlds[WorldNumber];
+
+        Animator.SetInteger("WorldNum", WorldNumber);
+
         ChangeWorldState(0);
     }
     
@@ -247,8 +249,8 @@ public class World1 : MonoBehaviour
 
     public void ChangeAnimatorPart(int part)
     {
-        Animator.SetInteger("Part", part);
-        Animator.SetTrigger("ChangeState");
+        _currentWorld.GetComponent<Animator>().SetInteger("Part", part);
+        _currentWorld.GetComponent<Animator>().SetTrigger("ChangeState");
     }
    
     public void StartRecording()
