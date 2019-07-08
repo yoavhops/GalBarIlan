@@ -90,8 +90,6 @@ public class World1 : MonoBehaviour
     public OnClick World2MegiClickable;
     public OnClick World2TanogClickable;
 
-    [Header("World3 Links")]
-
     [Header("World4 Links")]
     public OnClick World4FirstBoxClickable;
     public OnClick World4SecondBoxClickable;
@@ -125,7 +123,8 @@ public class World1 : MonoBehaviour
 
         WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
         {
-            {0, new Dictionary<int, WorldState>(){
+            { 0, new Dictionary<int, WorldState>()
+                {
                     {
                         (int)World1State.Introduction, new AnimationWorldState(
                             this, (int)World1State.Introduction, (int)World1State.WaitForClickOnStarFish)
@@ -237,86 +236,84 @@ public class World1 : MonoBehaviour
                 }
             },
 
-            { 4, new Dictionary<int, WorldState>(){
+            { 3, new Dictionary<int, WorldState>()
                 {
-                    (int) World4State.SwimIn, new AnimationWorldState(
-                            this, (int)World4State.SwimIn, (int)World4State.AskAboutBoxes)
-                },
+                    {
+                        (int) World4State.SwimIn, new AnimationWorldState(
+                                this, (int)World4State.SwimIn, (int)World4State.AskAboutBoxes)
+                    },
 
-                {
-                    (int) World4State.AskAboutBoxes, new WaitForClickWorldState(
-                            this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes,
-                            World4FirstBoxClickable   )
-                },
+                    {
+                        (int) World4State.AskAboutBoxes, new WaitForClickWorldState(
+                                this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes,
+                                World4FirstBoxClickable   )
+                    },
 
-                {
-                    (int) World4State.WaitForYes, new WaitForVoiceApprove(
-                            this, (int)World4State.WaitForYes, (int)World4State.ClickOnFirstBoxRequest,
-                            (int)World4State.WaitForYesAgain,
-                            new List<string>() {"yes", "okay", "ok"})
-                },
+                    {
+                        (int) World4State.WaitForYes, new WaitForVoiceApprove(
+                                this, (int)World4State.WaitForYes, (int)World4State.ClickOnFirstBoxRequest,
+                                (int)World4State.WaitForYesAgain,
+                                new List<string>() {"yes", "okay", "ok"})
+                    },
 
-                {
-                    (int) World4State.WaitForYesAgain, new AnimationWorldState(
-                            this, (int)World4State.WaitForYesAgain, (int)World4State.WaitForYes)
-                },
+                    {
+                        (int) World4State.WaitForYesAgain, new AnimationWorldState(
+                                this, (int)World4State.WaitForYesAgain, (int)World4State.WaitForYes)
+                    },
 
-                {
-                    (int) World4State.ClickOnFirstBoxRequest, new AnimationWorldState(
-                            this, (int)World4State.ClickOnFirstBoxRequest, (int)World4State.WaitForClickOnFirstBox)
-                },
+                    {
+                        (int) World4State.ClickOnFirstBoxRequest, new AnimationWorldState(
+                                this, (int)World4State.ClickOnFirstBoxRequest, (int)World4State.WaitForClickOnFirstBox)
+                    },
 
-                {
-                    (int) World4State.WaitForClickOnFirstBox, new WaitForClickWorldState(
-                            this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.NextWorld, World4FirstBoxClickable)
-                },
+                    {
+                        (int) World4State.WaitForClickOnFirstBox, new WaitForClickWorldState(
+                                this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.NextWorld, World4FirstBoxClickable)
+                    },
 
-                {
-                    (int) World4State.RepeatPassword, new AnimationWorldState(
-                            this, (int)World4State.RepeatPassword, (int)World4State.WaitForFirstPassword)
-                },
+                    {
+                        (int) World4State.RepeatPassword, new AnimationWorldState(
+                                this, (int)World4State.RepeatPassword, (int)World4State.WaitForFirstPassword)
+                    },
 
-                {
-                    (int) World4State.WaitForFirstPassword, new WaitForVoiceApprove(
-                            this, (int)World4State.WaitForFirstPassword, (int)World4State.ClickOnSecondBoxRequest,
-                            (int)World4State.WaitForFirstPasswordAgain,
-                            new List<string>() {"the dog barks in the garden"})
-                },
+                    {
+                        (int) World4State.WaitForFirstPassword, new WaitForVoiceApprove(
+                                this, (int)World4State.WaitForFirstPassword, (int)World4State.ClickOnSecondBoxRequest,
+                                (int)World4State.WaitForFirstPasswordAgain,
+                                new List<string>() {"the dog barks in the garden"})
+                    },
 
-                {
-                    (int) World4State.WaitForFirstPasswordAgain, new AnimationWorldState(
-                            this, (int)World4State.WaitForFirstPasswordAgain, (int)World4State.WaitForFirstPassword)
-                },
+                    {
+                        (int) World4State.WaitForFirstPasswordAgain, new AnimationWorldState(
+                                this, (int)World4State.WaitForFirstPasswordAgain, (int)World4State.WaitForFirstPassword)
+                    },
 
-                {
-                    (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
-                            this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
-                },
+                    {
+                        (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
+                                this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
+                    },
 
-                {
-                    (int) World4State.WaitForSecondPassword, new WaitForVoiceApprove(
-                            this, (int)World4State.WaitForSecondPassword, (int)World4State.SwimAway,
-                            (int)World4State.WaitForSecondPasswordAgain,
-                            new List<string>() {"who did the horse kick"})
-                },
+                    {
+                        (int) World4State.WaitForSecondPassword, new WaitForVoiceApprove(
+                                this, (int)World4State.WaitForSecondPassword, (int)World4State.SwimAway,
+                                (int)World4State.WaitForSecondPasswordAgain,
+                                new List<string>() {"who did the horse kick"})
+                    },
 
-                {
-                    (int) World4State.WaitForSecondPasswordAgain, new AnimationWorldState(
-                            this, (int)World4State.WaitForSecondPasswordAgain, (int)World4State.SwimAway)
-                },
+                    {
+                        (int) World4State.WaitForSecondPasswordAgain, new AnimationWorldState(
+                                this, (int)World4State.WaitForSecondPasswordAgain, (int)World4State.SwimAway)
+                    },
                 
-                {
-                    (int) World4State.SwimAway, new AnimationWorldState(
-                            this, (int)World4State.SwimAway, (int)World4State.NextWorld)
-                },
-            }
+                    {
+                        (int) World4State.SwimAway, new AnimationWorldState(
+                                this, (int)World4State.SwimAway, (int)World4State.NextWorld)
+                    },
+                }
+
             }
         };
     }
-
-  
-   
-    
 
     // Start is called before the first frame update
     void Start()
