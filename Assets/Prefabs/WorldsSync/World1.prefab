@@ -387,6 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720759166960974305}
   - component: {fileID: 720759166960974306}
+  - component: {fileID: 1441120158}
   m_Layer: 0
   m_Name: World1
   m_TagString: Untagged
@@ -437,6 +438,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1441120158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720759166960974304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0734fb7f5353bed4c8ed706876f9fa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAnimationEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnAnimationEventDone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &720759167114366145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,17 +1134,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 893592039608986069, guid: a29dfa6cfacef6b43a28e5c722e8437e,
         type: 3}
-      propertyPath: Callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: Collider2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8131612703058806893}
+    - target: {fileID: 1401259064, guid: a29dfa6cfacef6b43a28e5c722e8437e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 402625844455853206}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a29dfa6cfacef6b43a28e5c722e8437e, type: 3}
+--- !u!58 &8131612703058806893 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8730664936280403246, guid: a29dfa6cfacef6b43a28e5c722e8437e,
+    type: 3}
+  m_PrefabInstance: {fileID: 716291329242195267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8953219422296057172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8480557975138320407, guid: a29dfa6cfacef6b43a28e5c722e8437e,
     type: 3}
   m_PrefabInstance: {fileID: 716291329242195267}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &402625844455853206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 893592039608986069, guid: a29dfa6cfacef6b43a28e5c722e8437e,
+    type: 3}
+  m_PrefabInstance: {fileID: 716291329242195267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac76faf0d8f18749812bf88fd371602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2396773328054463278
 PrefabInstance:
   m_ObjectHideFlags: 0
