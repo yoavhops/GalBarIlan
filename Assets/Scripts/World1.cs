@@ -26,7 +26,7 @@ public enum World2State
 
 public enum World4State
 {
-    SwimIns = 0,
+    SwimIn = 0,
     AskAboutBoxes = 1,
     WaitForYes = 2,
     WaitForYesAgain = 21,
@@ -36,10 +36,12 @@ public enum World4State
     WaitForFirstPassword = 6,
     WaitForFirstPasswordAgain = 61,
     ClickOnSecondBoxRequest = 7,
-    WaitForSecondPassword = 8,
-    WaitForSecondPasswordAgain = 81,
-    SwimAway = 9,
-    NextWorld = 10,
+    WaitForClickOnSecondBox = 8,
+    RepeatSecondPassword = 9,
+    WaitForSecondPassword = 10,
+    WaitForSecondPasswordAgain = 101,
+    SwimAway = 11,
+    NextWorld = 12,
 }
 
 public class World1 : MonoBehaviour
@@ -115,8 +117,8 @@ public class World1 : MonoBehaviour
 
             { 4, new Dictionary<int, WorldState>(){
                 {
-                    (int) World4State.SwimIns, new AnimationWorldState(
-                            this, (int)World4State.SwimIns, (int)World4State.AskAboutBoxes)
+                    (int) World4State.SwimIn, new AnimationWorldState(
+                            this, (int)World4State.SwimIn, (int)World4State.AskAboutBoxes)
                 },
 
                 {
@@ -173,7 +175,7 @@ public class World1 : MonoBehaviour
                     (int) World4State.WaitForSecondPassword, new WaitForVoiceApprove(
                             this, (int)World4State.WaitForSecondPassword, (int)World4State.SwimAway,
                             (int)World4State.WaitForSecondPasswordAgain,
-                            new List<string>() {"the dog barks in the garden"})
+                            new List<string>() {"who did the horse kick"})
                 },
 
                 {
