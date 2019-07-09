@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public enum World1State
 {
     Introduction = 0,
@@ -109,6 +107,7 @@ public class World1 : MonoBehaviour
         InitStates();
 
         ChangeWorld();
+
         ChangeWorldState(WorldStartNumber);
     }
 
@@ -118,7 +117,9 @@ public class World1 : MonoBehaviour
         {
             {0, (int)World1State.NextWorld},
             {1, (int)World2State.NextWorld},
-            {2, (int)World2State.NextWorld},
+           // {2, (int)Worl3State.NextWorld},
+            {3, (int)World4State.NextWorld},
+           // {2, (int)World5State.NextWorld},
         };
 
         WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
@@ -244,9 +245,8 @@ public class World1 : MonoBehaviour
                     },
 
                     {
-                        (int) World4State.AskAboutBoxes, new WaitForClickWorldState(
-                                this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes,
-                                World4FirstBoxClickable   )
+                        (int) World4State.AskAboutBoxes, new AnimationWorldState(
+                                this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes)
                     },
 
                     {
@@ -268,7 +268,7 @@ public class World1 : MonoBehaviour
 
                     {
                         (int) World4State.WaitForClickOnFirstBox, new WaitForClickWorldState(
-                                this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.NextWorld, World4FirstBoxClickable)
+                                this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.RepeatPassword, World4FirstBoxClickable)
                     },
 
                     {
@@ -290,7 +290,17 @@ public class World1 : MonoBehaviour
 
                     {
                         (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
-                                this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForSecondPassword)
+                                this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForClickOnSecondBox)
+                    },
+
+                    {
+                        (int) World4State.WaitForClickOnSecondBox, new WaitForClickWorldState(
+                                this, (int)World4State.WaitForClickOnSecondBox, (int)World4State.RepeatSecondPassword, World4SecondBoxClickable)
+                    },
+
+                    {
+                        (int) World4State.RepeatSecondPassword, new AnimationWorldState(
+                                this, (int)World4State.RepeatSecondPassword, (int)World4State.WaitForSecondPassword)
                     },
 
                     {
