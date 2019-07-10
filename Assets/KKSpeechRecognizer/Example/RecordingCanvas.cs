@@ -16,6 +16,7 @@ public class RecordingCanvas : MonoBehaviour {
 
     public Action<string> OnFinalResults;
     public Action OnFailureToRecord;
+    public Action OnMicrophoneLoadEnoughEvent;
 
     public bool IsRecording
     {
@@ -35,8 +36,9 @@ public class RecordingCanvas : MonoBehaviour {
         IsRecording = false;
         resultText.text = "";
 
+        SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
+
         if (SpeechRecognizer.ExistsOnDevice()) {
-			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
 			listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
 			listener.onErrorDuringRecording.AddListener(OnError);
@@ -44,7 +46,11 @@ public class RecordingCanvas : MonoBehaviour {
 			listener.onFinalResults.AddListener(OnFinalResult);
 			listener.onPartialResults.AddListener(OnPartialResult);
 			listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
-		    AllowRecording = false;
+
+            //Yoav
+            listener.OnMicrophoneLoadEnough.AddListener(OnMicrophoneLoadEnough);
+
+            AllowRecording = false;
 		    SpeechRecognizer.RequestAccess();
 
             if (SetEnglish)
@@ -59,15 +65,24 @@ public class RecordingCanvas : MonoBehaviour {
 
 		}
 
-	}
+        if (Application.isEditor)
+        {
+            //Yoav
+            listener.OnMicrophoneLoadEnough.AddListener(OnMicrophoneLoadEnough);
+            AllowRecording = true;
+        }
 
-	public void OnFinalResult(string result) {
+    }
+
+    public void OnMicrophoneLoadEnough()
+    {
+        OnMicrophoneLoadEnoughEvent?.Invoke();
+    }
+
+    public void OnFinalResult(string result) {
         resultText.text = result;
-        if (OnFinalResults != null)
-	    {
-	        OnFinalResults(result);
-	    }
-	}
+        OnFinalResults?.Invoke(result);
+    }
 
 	public void OnPartialResult(string result) {
 		resultText.text = result;
@@ -75,6 +90,12 @@ public class RecordingCanvas : MonoBehaviour {
 
 	public void OnAvailabilityChange(bool available) {
 	    AllowRecording = available;
+
+        
+        if (Application.isEditor)
+        {
+            AllowRecording = true;
+        }
 		if (!available) {
 			resultText.text = "Speech Recognition not available";
 		}
@@ -101,15 +122,15 @@ public class RecordingCanvas : MonoBehaviour {
 	{
         Debug.LogError(error);
 	    IsRecording = false;
-	    OnFailureToRecord();
+	    OnFailureToRecord?.Invoke();
     }
 
-    public void StartRecording()
+    public void StartRecording(bool onlyLoudness)
     {
         if (AllowRecording &&
             !SpeechRecognizer.IsRecording())
         {
-            SpeechRecognizer.StartRecording(true);
+            SpeechRecognizer.StartRecording(true, onlyLoudness);
             IsRecording = true;
         }
     }

@@ -145,7 +145,7 @@ public class World1 : MonoBehaviour
                         (int) World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
                             this, (int)World1State.WaitForVoiceApprove, (int)World1State.SwimAway,
                             (int)World1State.WaitForVoiceApproveAgain,
-                            new List<string>() {"yes", "okay", "ok"})
+                            new List<string>() {"yes", "okay", "ok"},true, true)
                     },
 
                     {
@@ -375,9 +375,9 @@ public class World1 : MonoBehaviour
         _currentWorld.GetComponent<Animator>().SetTrigger("ChangeState");
     }
    
-    public void StartRecording()
+    public void StartRecording(bool onlyLoudness = false)
     {
-        RecordingCanvas.StartRecording();
+        RecordingCanvas.StartRecording(onlyLoudness);
         TestingVoiceApprove();
     }
 

@@ -36,7 +36,13 @@ namespace KKSpeech {
 
 		#pragma warning disable CS0162 
 		public static bool ExistsOnDevice() {
-			#if UNITY_IOS && !UNITY_EDITOR
+
+		    if (Application.isEditor)
+		    {
+		        StartMicrophone();
+		    }
+
+            #if UNITY_IOS && !UNITY_EDITOR
 			return iOSSpeechRecognizer._EngineExists();
 			#elif UNITY_ANDROID && !UNITY_EDITOR
 			return AndroidSpeechRecognizer.EngineExists();
@@ -45,20 +51,98 @@ namespace KKSpeech {
 		}
 
 		public static void RequestAccess() {
+
 			#if UNITY_IOS && !UNITY_EDITOR
 			iOSSpeechRecognizer._RequestAccess();
 			#elif UNITY_ANDROID && !UNITY_EDITOR
 			AndroidSpeechRecognizer.RequestAccess();
 			#endif
+            
+		    StartMicrophone();
+
 		}
 
-		public static bool IsRecording() {
+        private static AudioClip _clipRecord;
+	    private static int _sampleWindow = 128;
+	    private static float _currentMicrophoneMax = 0;
+	    private static float _loadEnough = 0.01f;
+	    private static float _waitBeforeMicrophoneCheck = 0.5f;
+	    private static float _startTimeForWaitBeforeMicrophoneCheck;
+
+        //Yoav - units microphone
+        private static void StartMicrophone()
+        {
+            ResetMicrophoneStatus();
+            _clipRecord = Microphone.Start(null, true, 999, 44100);
+	        Debug.Log(_clipRecord);
+        }
+
+	    private static void ResetMicrophoneStatus()
+	    {
+	        _startTimeForWaitBeforeMicrophoneCheck = Time.timeSinceLevelLoad;
+            _currentMicrophoneMax = 0;
+	    }
+
+	    private static float GetMicrophoneMax()
+	    {
+	        return _currentMicrophoneMax;
+	    }
+
+	    public static bool WasMicrophoneLoadEnough()
+	    {
+	        return _currentMicrophoneMax > _loadEnough;
+	    }
+
+        public static void CheckMicrophoneMax()
+        {
+
+            if (Time.timeSinceLevelLoad < (_startTimeForWaitBeforeMicrophoneCheck + _waitBeforeMicrophoneCheck))
+            {
+                return;
+            }
+
+            var sampleMax = MicrophoneLevelMaxAtSample();
+	        if (sampleMax > _currentMicrophoneMax)
+	        {
+	            _currentMicrophoneMax = sampleMax;
+	        }
+	    }
+
+	    private static float MicrophoneLevelMaxAtSample()
+	    {
+	        float levelMax = 0;
+	        float[] waveData = new float[_sampleWindow];
+	        int micPosition = Microphone.GetPosition(null) - (_sampleWindow + 1);
+	        if (micPosition < 0)
+	        {
+	            return 0;
+	        }
+	        _clipRecord.GetData(waveData, micPosition);
+	        for (int i = 0; i < _sampleWindow; ++i)
+	        {
+	            float wavePeak = waveData[i] * waveData[i];
+	            if (levelMax < wavePeak)
+	            {
+	                levelMax = wavePeak;
+	            }
+	        }
+	        return levelMax;
+	    }
+
+
+        public static bool IsRecording() {
 			#if UNITY_IOS && !UNITY_EDITOR
 			return iOSSpeechRecognizer._IsRecording();
 			#elif UNITY_ANDROID && !UNITY_EDITOR
 			return AndroidSpeechRecognizer.IsRecording();
 			#endif
-			return false;
+
+            if (Application.isEditor)
+            {
+                return true;
+            }
+
+            return false;
 		}
 
 		public static AuthorizationStatus GetAuthorizationStatus() {
@@ -87,8 +171,15 @@ namespace KKSpeech {
 			#endif
 		}
 
-		public static void StartRecording(bool shouldCollectPartialResults) {
-			Debug.Log("StartRecording...");
+		public static void StartRecording(bool shouldCollectPartialResults, bool onlyLoudness = false)
+		{
+		    ResetMicrophoneStatus();
+		    if (onlyLoudness)
+		    {
+                return;
+		    }
+
+            Debug.Log("StartRecording...");
 			#if UNITY_IOS && !UNITY_EDITOR
 			iOSSpeechRecognizer._StartRecording(shouldCollectPartialResults);
 			#elif UNITY_ANDROID && !UNITY_EDITOR

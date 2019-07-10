@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using KKSpeech;
@@ -35,7 +36,23 @@ namespace KKSpeech {
 		// Android-only
 		public UnityEvent onEndOfSpeech = new UnityEvent();
 
-		void AvailabilityDidChange(string available) {
+        //yoav
+	    public UnityEvent OnMicrophoneLoadEnough = new UnityEvent();
+        
+	    void Update()
+	    {
+	        if (SpeechRecognizer.IsRecording())
+	        {
+	            SpeechRecognizer.CheckMicrophoneMax();
+
+	            if (SpeechRecognizer.WasMicrophoneLoadEnough())
+	            {
+	                OnMicrophoneLoadEnough.Invoke();
+                }
+	        }
+	    }
+
+        void AvailabilityDidChange(string available) {
 			Debug.Log("AvailabilityDidChange " + available);
 			onAvailabilityChanged.Invoke( available.Equals("1"));
 		}
