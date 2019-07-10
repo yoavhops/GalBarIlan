@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 4
+  WorldNumber: 0
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   TestingFakeSound:
   - UseMe: 0
     Result: No
-  - UseMe: 0
+  - UseMe: 1
     Result: Yes
   - UseMe: 0
     Result: NotMegi
@@ -1247,6 +1247,10 @@ MonoBehaviour:
     Result: NotTango
   - UseMe: 1
     Result: Tango
+  - UseMe: 1
+    Result: Who did the horse kick
+  - UseMe: 1
+    Result: the dog barks in the garden
 --- !u!114 &1522171247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,6 +1290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465605657812719229, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
@@ -1377,7 +1386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1758925559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1790,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 8203168060234855996, guid: 388b06092bc2ca545848fd4670f11699,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8203168060234855995, guid: 388b06092bc2ca545848fd4670f11699,
         type: 3}

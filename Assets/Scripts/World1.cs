@@ -73,7 +73,7 @@ public class World1 : MonoBehaviour
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
 
-    private Dictionary<int, Dictionary<int, WorldState>> WorldToStateDictionary;
+    private Dictionary<int, IDictionary<int, WorldState>> WorldToStateDictionary;
     private Dictionary<int, int> WorldToLastStateDictionary;
 
 
@@ -98,11 +98,7 @@ public class World1 : MonoBehaviour
 
     void Awake()
     {
-
-        foreach (var World in Worlds)
-        {
-            World.SetActive(false);
-        }
+        TurnOffAllWorlds();
 
         InitStates();
 
@@ -111,246 +107,134 @@ public class World1 : MonoBehaviour
         ChangeWorldState(WorldStartNumber);
     }
 
+    private void TurnOffAllWorlds()
+    {
+        foreach (var World in Worlds)
+        {
+            World.SetActive(false);
+        }
+    }
+
     private void InitStates()
     {
         WorldToLastStateDictionary = new Dictionary<int, int>()
         {
             {0, (int)World1State.NextWorld},
             {1, (int)World2State.NextWorld},
-           // {2, (int)Worl3State.NextWorld},
+            {2, (int)World3State.NextWorld},
             {3, (int)World4State.NextWorld},
-           // {2, (int)World5State.NextWorld},
         };
 
-        WorldToStateDictionary = new Dictionary<int, Dictionary<int, WorldState>>()
+        WorldToStateDictionary = new Dictionary<int, IDictionary<int, WorldState>>();
+
+        InitWorldToStateDictionary();
+
+        InitWorld0Dictionary();
+        InitWorld1Dictionary();
+        InitWorld2Dictionary();
+        InitWorld3Dictionary();
+    }
+
+    private void InitWorldToStateDictionary()
+    {
+        for (int i = 0; i < Worlds.Count; i++)
         {
-            { 0, new Dictionary<int, WorldState>()
-                {
-                    {
-                        (int)World1State.Introduction, new AnimationWorldState(
-                            this, (int)World1State.Introduction, (int)World1State.WaitForClickOnStarFish)
-                    },
-
-                    {
-                        (int)World1State.WaitForClickOnStarFish, new WaitForClickWorldState(
-                            this, (int)World1State.WaitForClickOnStarFish, (int)World1State.SealSwimAway,
-                            World1StarFishClickable)
-                    },
-
-                    {
-                        (int)World1State.SealSwimAway, new AnimationWorldState(
-                            this, (int)World1State.SealSwimAway, (int)World1State.WaitForVoiceApprove)
-                    },
-
-                    {
-                        (int) World1State.WaitForVoiceApprove, new WaitForVoiceApprove(
-                            this, (int)World1State.WaitForVoiceApprove, (int)World1State.SwimAway,
-                            (int)World1State.WaitForVoiceApproveAgain,
-                            new List<string>() {"yes", "okay", "ok"})
-                    },
-
-                    {
-                        (int) World1State.WaitForVoiceApproveAgain, new AnimationWorldState(
-                            this, (int)World1State.WaitForVoiceApproveAgain, (int)World1State.WaitForVoiceApprove)
-                    },
-
-                    {
-                        (int) World1State.SwimAway, new AnimationWorldState(
-                            this, (int)World1State.SwimAway, (int)World1State.NextWorld)
-                    },
-                }
-            },
-
-
-            {1, new Dictionary<int, WorldState>()
-                {
-                    {
-                        (int)World2State.ChangeScreens, new AnimationWorldState(
-                            this, (int)World2State.ChangeScreens, (int)World2State.Intro)
-                    },
-
-                    {
-                        (int)World2State.Intro, new AnimationWorldState(
-                            this, (int)World2State.Intro, (int)World2State.ClickMegi)
-                    },
-
-                    {
-                        (int)World2State.ClickMegi, new WaitForClickWorldState(
-                            this, (int)World2State.ClickMegi, (int)World2State.MegiIntro, World2MegiClickable)
-                    },
-
-                    {
-                        (int)World2State.MegiIntro, new AnimationWorldState(
-                            this, (int)World2State.MegiIntro, (int)World2State.ClickMegiAgain)
-                    },
-
-                    {
-                        (int)World2State.ClickMegiAgain, new WaitForClickWorldState(
-                            this, (int)World2State.ClickMegiAgain, (int)World2State.WaitForMegiVoiceInput, World2MegiClickable)
-                    },
-
-                    {
-                        (int)World2State.WaitForMegiVoiceInput, new WaitForVoiceApprove(
-                            this, (int)World2State.WaitForMegiVoiceInput, (int)World2State.GoodJobMegi, (int)World2State.MegiIntro,
-                            new List<string>() {"Megi", "Mago", "Mango", "margo", "margaret", "Magat"} )
-                    },
-
-                    {
-                        (int)World2State.GoodJobMegi, new AnimationWorldState(
-                            this, (int)World2State.GoodJobMegi, (int)World2State.ClickTanog)
-                    },
-
-                    {
-                        (int)World2State.ClickTanog, new WaitForClickWorldState(
-                            this, (int)World2State.ClickTanog, (int)World2State.WaitForTanogVoiceInput, World2TanogClickable)
-                    },
-
-                    {
-                        (int)World2State.WaitForTanogVoiceInput, new WaitForVoiceApprove(
-                            this, (int)World2State.WaitForTanogVoiceInput, (int)World2State.GoodJobTanog, (int)World2State.ClickTanog,
-                            new List<string>() {"Tango", "Tanog"} )
-                    },
-
-                    {
-                        (int)World2State.GoodJobTanog, new AnimationWorldState(
-                            this, (int)World2State.GoodJobTanog, (int)World2State.NextWorld)
-                    },
-                }
-            },
-
-            {2, new Dictionary<int, WorldState>()
-                {
-                    {
-                        (int)World3State.ChangeScreens, new AnimationWorldState(
-                            this, (int)World3State.ChangeScreens, (int)World3State.Intro)
-                    },
-
-                    {
-                        (int)World3State.Intro, new AnimationWorldState(
-                            this, (int)World3State.Intro, (int)World3State.SwimAway)
-                    },
-
-                    {
-                        (int)World3State.SwimAway, new AnimationWorldState(
-                            this, (int)World3State.SwimAway, (int)World3State.NextWorld)
-                    },
-                }
-            },
-
-            { 3, new Dictionary<int, WorldState>()
-                {
-                    {
-                        (int) World4State.SwimIn, new AnimationWorldState(
-                                this, (int)World4State.SwimIn, (int)World4State.AskAboutBoxes)
-                    },
-
-                    {
-                        (int) World4State.AskAboutBoxes, new AnimationWorldState(
-                                this, (int)World4State.AskAboutBoxes, (int)World4State.WaitForYes)
-                    },
-
-                    {
-                        (int) World4State.WaitForYes, new WaitForVoiceApprove(
-                                this, (int)World4State.WaitForYes, (int)World4State.ClickOnFirstBoxRequest,
-                                (int)World4State.WaitForYesAgain,
-                                new List<string>() {"yes", "okay", "ok"})
-                    },
-
-                    {
-                        (int) World4State.WaitForYesAgain, new AnimationWorldState(
-                                this, (int)World4State.WaitForYesAgain, (int)World4State.WaitForYes)
-                    },
-
-                    {
-                        (int) World4State.ClickOnFirstBoxRequest, new AnimationWorldState(
-                                this, (int)World4State.ClickOnFirstBoxRequest, (int)World4State.WaitForClickOnFirstBox)
-                    },
-
-                    {
-                        (int) World4State.WaitForClickOnFirstBox, new WaitForClickWorldState(
-                                this, (int)World4State.WaitForClickOnFirstBox, (int)World4State.RepeatPassword, World4FirstBoxClickable)
-                    },
-
-                    {
-                        (int) World4State.RepeatPassword, new AnimationWorldState(
-                                this, (int)World4State.RepeatPassword, (int)World4State.WaitForFirstPassword)
-                    },
-
-                    {
-                        (int) World4State.WaitForFirstPassword, new WaitForVoiceApprove(
-                                this, (int)World4State.WaitForFirstPassword, (int)World4State.ClickOnSecondBoxRequest,
-                                (int)World4State.WaitForFirstPasswordAgain,
-                                new List<string>() {"the dog barks in the garden"})
-                    },
-
-                    {
-                        (int) World4State.WaitForFirstPasswordAgain, new AnimationWorldState(
-                                this, (int)World4State.WaitForFirstPasswordAgain, (int)World4State.WaitForFirstPassword)
-                    },
-
-                    {
-                        (int) World4State.ClickOnSecondBoxRequest, new AnimationWorldState(
-                                this, (int)World4State.ClickOnSecondBoxRequest, (int)World4State.WaitForClickOnSecondBox)
-                    },
-
-                    {
-                        (int) World4State.WaitForClickOnSecondBox, new WaitForClickWorldState(
-                                this, (int)World4State.WaitForClickOnSecondBox, (int)World4State.RepeatSecondPassword, World4SecondBoxClickable)
-                    },
-
-                    {
-                        (int) World4State.RepeatSecondPassword, new AnimationWorldState(
-                                this, (int)World4State.RepeatSecondPassword, (int)World4State.WaitForSecondPassword)
-                    },
-
-                    {
-                        (int) World4State.WaitForSecondPassword, new WaitForVoiceApprove(
-                                this, (int)World4State.WaitForSecondPassword, (int)World4State.SwimAway,
-                                (int)World4State.WaitForSecondPasswordAgain,
-                                new List<string>() {"who did the horse kick"})
-                    },
-
-                    {
-                        (int) World4State.WaitForSecondPasswordAgain, new AnimationWorldState(
-                                this, (int)World4State.WaitForSecondPasswordAgain, (int)World4State.SwimAway)
-                    },
-                
-                    {
-                        (int) World4State.SwimAway, new AnimationWorldState(
-                                this, (int)World4State.SwimAway, (int)World4State.NextWorld)
-                    },
-                }
-
-            }
-        };
+            WorldToStateDictionary.Add(i, new Dictionary<int, WorldState>());
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void InitWorld0Dictionary()
     {
-        
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.Introduction, World1State.WaitForClickOnStarFish));
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.WaitForClickOnStarFish, World1State.SealSwimAway, World1StarFishClickable));
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.SealSwimAway, World1State.WaitForVoiceApprove));
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.WaitForVoiceApprove, World1State.SwimAway, World1State.WaitForVoiceApproveAgain,
+                        new List<string>() { "yes", "okay", "ok" }));
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.WaitForVoiceApproveAgain, World1State.WaitForVoiceApprove));
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World1State.SwimAway, World1State.NextWorld));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitWorld1Dictionary()
     {
-        
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
+                    World2State.ChangeScreens, World2State.Intro));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
+                    World2State.Intro, World2State.ClickMegi));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
+                    World2State.ClickMegi, World2State.MegiIntro, World2MegiClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.MegiIntro, World2State.ClickMegiAgain));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
+                        new List<string>() { "Megi", "Mago", "Mango", "margo", "margaret", "Magat" }));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.GoodJobMegi, World2State.ClickTanog));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.ClickTanog, World2State.WaitForTanogVoiceInput, World2TanogClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                    World2State.WaitForTanogVoiceInput, World2State.GoodJobTanog, World2State.ClickTanog,
+                        new List<string>() { "Tango", "Tanog" }));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.GoodJobTanog, World2State.NextWorld));
+
     }
 
-    private WorldState WorldEnumToState(int enumState)
+    private void InitWorld2Dictionary()
     {
-        return WorldToStateDictionary[WorldNumber][enumState];
+        WorldToStateDictionary[2].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World3State.ChangeScreens, World3State.Intro));
+        WorldToStateDictionary[2].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World3State.Intro, World3State.SwimAway));
+        WorldToStateDictionary[2].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World3State.SwimAway, World3State.NextWorld));
     }
 
-    private bool ShouldGoToNextWorld(int nextState)
+    private void InitWorld3Dictionary()
     {
-        return WorldToLastStateDictionary[WorldNumber] == nextState;
-    }
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.SwimIn, World4State.AskAboutBoxes));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.AskAboutBoxes, World4State.WaitForYes));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForYes, World4State.ClickOnFirstBoxRequest,
+            World4State.WaitForYesAgain, new List<string>() { "yes", "okay", "ok" }));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForYesAgain, World4State.WaitForYes));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.ClickOnFirstBoxRequest, World4State.WaitForClickOnFirstBox));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForClickOnFirstBox, World4State.RepeatPassword, World4FirstBoxClickable));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.RepeatPassword, World4State.WaitForFirstPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForFirstPassword, World4State.ClickOnSecondBoxRequest,
+                World4State.WaitForFirstPasswordAgain,
+                    new List<string>() { "the dog barks in the garden" }));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForFirstPasswordAgain, World4State.WaitForFirstPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.ClickOnSecondBoxRequest, World4State.WaitForClickOnSecondBox));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForClickOnSecondBox, World4State.RepeatSecondPassword, World4SecondBoxClickable));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.RepeatSecondPassword, World4State.WaitForSecondPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForSecondPassword, World4State.SwimAway,
+                World4State.WaitForSecondPasswordAgain,
+                new List<string>() { "who did the horse kick" }));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.WaitForSecondPasswordAgain, World4State.SwimAway));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.SwimAway, World4State.NextWorld));
 
-    private void NextWorld()
-    {
-        WorldNumber++;
-        ChangeWorld();
     }
 
     private void ChangeWorld()
@@ -379,12 +263,28 @@ public class World1 : MonoBehaviour
         _currentWorldState.StartPart();
     }
 
+    private WorldState WorldEnumToState(int enumState)
+    {
+        return WorldToStateDictionary[WorldNumber][enumState];
+    }
+
     public void ChangeAnimatorPart(int part)
     {
         _currentWorld.GetComponent<Animator>().SetInteger("Part", part);
         _currentWorld.GetComponent<Animator>().SetTrigger("ChangeState");
     }
-   
+
+    private bool ShouldGoToNextWorld(int nextState)
+    {
+        return WorldToLastStateDictionary[WorldNumber] == nextState;
+    }
+
+    private void NextWorld()
+    {
+        WorldNumber++;
+        ChangeWorld();
+    }
+
     public void StartRecording()
     {
         RecordingCanvas.StartRecording();
