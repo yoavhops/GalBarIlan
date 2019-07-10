@@ -27,7 +27,7 @@ public static class WorldStateFactory
     }
 
     public static KeyValuePair<int, WorldState> GetIntToWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T nextWorldState, 
-                T failState, List<string> correctAnswers )
+                T failState, List<string> correctAnswers)
     {
         var worldStateInt = Convert.ToInt32(thisWorldState);
         var nextWorldStateInt = Convert.ToInt32(nextWorldState);

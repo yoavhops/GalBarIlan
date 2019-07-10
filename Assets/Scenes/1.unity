@@ -867,7 +867,7 @@ RectTransform:
   - {fileID: 43575012}
   - {fileID: 542521240}
   m_Father: {fileID: 1522171245}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1199,6 +1199,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2109695400}
   - {fileID: 1441120157}
   - {fileID: 408566598}
   - {fileID: 322825460}
@@ -1220,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VoiceAnswersMediator: {fileID: 2109695401}
   WorldNumber: 0
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
@@ -1239,9 +1241,9 @@ MonoBehaviour:
     Result: No
   - UseMe: 1
     Result: Yes
-  - UseMe: 0
+  - UseMe: 1
     Result: NotMegi
-  - UseMe: 0
+  - UseMe: 1
     Result: Megi
   - UseMe: 1
     Result: NotTango
@@ -1334,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
@@ -1512,6 +1514,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac76faf0d8f18749812bf88fd371602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2109695399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109695400}
+  - component: {fileID: 2109695401}
+  m_Layer: 0
+  m_Name: VoiceAnswersMediator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2109695400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109695399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1522171245}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2109695401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109695399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c4cba8fe05f414799b62985bb75c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShouldCheckFailures: 1
+  VoiceAnswers:
+  - UseMe: 1
+    SuccessString: yes
+    World: 0
+    Part: 3
+  - UseMe: 1
+    SuccessString: megi
+    World: 1
+    Part: 6
+  - UseMe: 1
+    SuccessString: tango
+    World: 1
+    Part: 9
+  - UseMe: 1
+    SuccessString: yes
+    World: 3
+    Part: 2
+  - UseMe: 1
+    SuccessString: the dog barks in the garden
+    World: 3
+    Part: 6
+  - UseMe: 1
+    SuccessString: who did the horse kick
+    World: 3
+    Part: 10
+  - UseMe: 0
+    SuccessString: 
+    World: 0
+    Part: 0
+  - UseMe: 0
+    SuccessString: 
+    World: 0
+    Part: 0
+  - UseMe: 0
+    SuccessString: 
+    World: 0
+    Part: 0
+  - UseMe: 0
+    SuccessString: 
+    World: 0
+    Part: 0
 --- !u!1001 &720759166212572796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1562,7 +1649,7 @@ PrefabInstance:
     - target: {fileID: 720759166960974305, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 720759166960974305, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
@@ -1640,7 +1727,7 @@ PrefabInstance:
     - target: {fileID: 2037198220433783946, guid: 6d96d56572b98dd4cbe39230d35e2a53,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2037198220433783946, guid: 6d96d56572b98dd4cbe39230d35e2a53,
         type: 3}
@@ -1737,7 +1824,7 @@ PrefabInstance:
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
@@ -1839,7 +1926,7 @@ PrefabInstance:
     - target: {fileID: 8203168060234855995, guid: 388b06092bc2ca545848fd4670f11699,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8203168060234855995, guid: 388b06092bc2ca545848fd4670f11699,
         type: 3}
