@@ -27,6 +27,11 @@ public abstract class WorldState
 
     public virtual void FinishState() { }
 
+    public int GetWorldStateIndex()
+    {
+        return _thisState;
+    }
+
     public virtual void StartPart(){
         _world1.ChangeAnimatorPart((int)_thisState);
     }
