@@ -175,7 +175,7 @@ public class World1 : MonoBehaviour
                     World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
-                       waitForMegiAnswers));
+                       waitForMegiAnswers, allowIfLoadEnough: true));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
 
@@ -185,7 +185,7 @@ public class World1 : MonoBehaviour
                     World2State.ClickTanog, World2State.WaitForTanogVoiceInput, World2TanogClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.WaitForTanogVoiceInput, World2State.GoodJobTanog, World2State.ClickTanog,
-                       waitForTanogAnswers));
+                       waitForTanogAnswers, allowIfLoadEnough: true));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForTanogVoiceInput, waitForTanogAnswers[0], ShouldTestFailure);
 
@@ -207,8 +207,8 @@ public class World1 : MonoBehaviour
     private void InitWorld3DictionaryAndVoiceAnswers()
     {
         var waitForYesAnswers = new List<string>() { "yes", "okay", "ok" };
-        var waitForFirstPasswordAnswers = new List<string>() { "the dog barks in the garden" };
-        var waitForSecondPasswordAnswers = new List<string>() { "who did the horse kick" };
+        var waitForFirstPasswordAnswers = new List<string>() { "the dog barks in the garden", "dog" };
+        var waitForSecondPasswordAnswers = new List<string>() { "who did the horse kick", "horse" };
 
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.SwimIn, World4State.AskAboutBoxes));
@@ -303,7 +303,7 @@ public class World1 : MonoBehaviour
         ChangeWorld();
     }
 
-    public void StartRecording()
+    public void StartRecording(bool onlyLoudness = false)
     {
         RecordingCanvas.StartRecording(onlyLoudness);
         TestingVoiceApprove();

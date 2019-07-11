@@ -16,6 +16,13 @@ public class WaitForVoiceApprove : WorldState
         bool allowIfLoadEnough = false, bool onlyLoudness = false) :
     base(world1, myState, NextState)
     {
+
+        if (onlyLoudness && allowIfLoadEnough)
+        {
+            UnityEngine.Debug.LogError("Issue with onlyLoudness and allowIfLoadEnough");
+            allowIfLoadEnough = false;
+        }
+
         _allowIfLoadEnough = allowIfLoadEnough;
         _onlyLoudness = onlyLoudness;
         _failureState = stateAfterFailure;
@@ -51,7 +58,7 @@ public class WaitForVoiceApprove : WorldState
     {
         foreach(var correctAnswer in _correctVoiceAnswers)
         {
-            if(string.Equals(result, correctAnswer, StringComparison.OrdinalIgnoreCase))
+            if (result.ToLower().Contains(correctAnswer.ToLower()))
             {
                 Success();
                 return;

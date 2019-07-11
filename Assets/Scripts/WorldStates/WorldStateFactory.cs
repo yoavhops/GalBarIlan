@@ -27,13 +27,13 @@ public static class WorldStateFactory
     }
 
     public static KeyValuePair<int, WorldState> GetIntToWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T nextWorldState, 
-                T failState, List<string> correctAnswers)
+                T failState, List<string> correctAnswers, bool allowIfLoadEnough = false, bool onlyLoudness = false)
     {
         var worldStateInt = Convert.ToInt32(thisWorldState);
         var nextWorldStateInt = Convert.ToInt32(nextWorldState);
         var failStateInt = Convert.ToInt32(failState);
 
-        var worldState = new WaitForVoiceApprove(world, worldStateInt, nextWorldStateInt, failStateInt, correctAnswers);
+        var worldState = new WaitForVoiceApprove(world, worldStateInt, nextWorldStateInt, failStateInt, correctAnswers, allowIfLoadEnough, onlyLoudness);
         return new KeyValuePair<int, WorldState>(worldStateInt, worldState);
     }
 
