@@ -1344,6 +1344,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World7
       objectReference: {fileID: 0}
+    - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1502,10 +1507,6 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
-    - target: {fileID: 525219847, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
-      propertyPath: Delay
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
 --- !u!4 &1754724239 stripped
@@ -2020,6 +2021,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World6
       objectReference: {fileID: 0}
+    - target: {fileID: 2998580128968396001, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2080,6 +2086,24 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 275200438, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 105705155, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911112993283391827, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a9922fbc4cb11064d902b3f6bab57969, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
 --- !u!1 &3755581951540883342 stripped
