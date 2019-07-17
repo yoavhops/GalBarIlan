@@ -229,7 +229,7 @@ public class World1 : MonoBehaviour
                     World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
-                       waitForMegiAnswers, allowIfLoadEnough: false, true));
+                       waitForMegiAnswers, allowIfLoadEnough: true));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
 

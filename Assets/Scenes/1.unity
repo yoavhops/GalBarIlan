@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldNumber: 3
-  WorldStartNumber: 0
+  WorldStartNumber: 3
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
   Worlds:
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   World2TanogClickable: {fileID: 3119466209353858215}
   World4FirstBoxClickable: {fileID: 2037198218837318253}
   World4SecondBoxClickable: {fileID: 2037198218837318251}
-  ShouldTestFailure: 0
+  ShouldTestFailure: 1
 --- !u!114 &1522171247
 MonoBehaviour:
   m_ObjectHideFlags: 0
