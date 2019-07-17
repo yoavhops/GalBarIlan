@@ -260,7 +260,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.SwimIn, World4State.AskAboutBoxes));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-            World4State.AskAboutBoxes, World4State.WaitForYes));
+            World4State.AskAboutBoxes, World4State.WaitForClickOnFirstBox));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.WaitForYes, World4State.ClickOnFirstBoxRequest,
             World4State.WaitForYesAgain, waitForYesAnswers));
