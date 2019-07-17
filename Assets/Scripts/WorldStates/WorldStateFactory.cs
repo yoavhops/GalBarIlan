@@ -16,7 +16,7 @@ public static class WorldStateFactory
         return new KeyValuePair<int, WorldState>(worldStateInt, worldState);
     }
 
-    public static KeyValuePair<int, WorldState> GetIntToWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T
+    public static KeyValuePair<int, WorldState> GetIntToClickWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T
                 nextWorldState, OnClick clickable)
     {
         var worldStateInt = Convert.ToInt32(thisWorldState);
@@ -26,7 +26,7 @@ public static class WorldStateFactory
         return new KeyValuePair<int, WorldState>(worldStateInt, worldState);
     }
 
-    public static KeyValuePair<int, WorldState> GetIntToWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T nextWorldState, 
+    public static KeyValuePair<int, WorldState> GetIntToVoiceWorldStateKeyValuePair<T>(World1 world, T thisWorldState, T nextWorldState, 
                 T failState, List<string> correctAnswers, bool allowIfLoadEnough = false, bool onlyLoudness = false)
     {
         var worldStateInt = Convert.ToInt32(thisWorldState);
