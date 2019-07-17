@@ -95,6 +95,13 @@ public enum World6State
     NextWorld = 11,
 }
 
+public enum World7State
+{
+    ChangeScreens = 0,
+    Intro = 1,
+    SwimOut = 2,
+    NextWorld = 3,
+}
 
 public class World1 : MonoBehaviour
 {
@@ -157,6 +164,7 @@ public class World1 : MonoBehaviour
             {3, (int)World4State.NextWorld},
             {4, (int)World5State.NextWorld},
             {5, (int)World6State.NextWorld},
+            {6, (int)World7State.NextWorld},
         };
 
         WorldToStateDictionary = new Dictionary<int, IDictionary<int, WorldState>>();
@@ -169,6 +177,7 @@ public class World1 : MonoBehaviour
         InitWorld3DictionaryAndVoiceAnswers();
         InitWorld4Dictionary();
         InitWorld5Dictionary();
+        InitWorld6Dictionary();
     }
 
     private void InitWorldToStateDictionary()
@@ -376,6 +385,18 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.SwimOut, World6State.NextWorld));
     }
+
+    private void InitWorld6Dictionary()
+    {
+        var world = 6;
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World7State.ChangeScreens, World7State.Intro));
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World7State.Intro, World7State.SwimOut));
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World7State.SwimOut, World7State.NextWorld));
+    }
+
 
     private void ChangeWorld()
     {
