@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Debug: {fileID: 1383541289}
-  Delay: 37.75
+  Delay: 0
 --- !u!1 &1450356970
 GameObject:
   m_ObjectHideFlags: 0
