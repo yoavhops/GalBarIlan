@@ -194,7 +194,7 @@ public class World1 : MonoBehaviour
 
         WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                 World1State.Introduction, World1State.WaitForClickOnStarFish));
-        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
                 World1State.WaitForClickOnStarFish, World1State.SealSwimAway, World1StarFishClickable));
         WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                 World1State.SealSwimAway, World1State.NextWorld));
@@ -221,25 +221,25 @@ public class World1 : MonoBehaviour
                     World2State.ChangeScreens, World2State.Intro));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
                     World2State.Intro, World2State.ClickMegi));
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this, 
                     World2State.ClickMegi, World2State.MegiIntro, World2MegiClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.MegiIntro, World2State.ClickMegiAgain));
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
                     World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
-                       waitForMegiAnswers, allowIfLoadEnough: false, true));
+                       waitForMegiAnswers, allowIfLoadEnough: false, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
 
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.GoodJobMegi, World2State.ClickTanog));
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
             World2State.ClickTanog, World2State.RepeatTanog, World2TanogClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World2State.RepeatTanog, World2State.WaitForTanogVoiceInput));
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     World2State.WaitForTanogVoiceInput, World2State.GoodJobTanog, World2State.ClickTanog,
                        waitForTanogAnswers, allowIfLoadEnough: true));
 
@@ -270,7 +270,7 @@ public class World1 : MonoBehaviour
             World4State.SwimIn, World4State.AskAboutBoxes));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.AskAboutBoxes, World4State.WaitForClickOnFirstBox));
-        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForYes, World4State.ClickOnFirstBoxRequest,
             World4State.WaitForYesAgain, waitForYesAnswers));
 
@@ -280,11 +280,11 @@ public class World1 : MonoBehaviour
             World4State.WaitForYesAgain, World4State.WaitForYes));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.ClickOnFirstBoxRequest, World4State.WaitForClickOnFirstBox));
-        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
             World4State.WaitForClickOnFirstBox, World4State.RepeatPassword, World4FirstBoxClickable));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.RepeatPassword, World4State.WaitForFirstPassword));
-        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForFirstPassword, World4State.ClickOnSecondBoxRequest,
                 World4State.RepeatPassword, waitForFirstPasswordAnswers));
 
@@ -294,11 +294,11 @@ public class World1 : MonoBehaviour
             World4State.WaitForFirstPasswordAgain, World4State.WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.ClickOnSecondBoxRequest, World4State.WaitForClickOnSecondBox));
-        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
             World4State.WaitForClickOnSecondBox, World4State.RepeatSecondPassword, World4SecondBoxClickable));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.RepeatSecondPassword, World4State.WaitForSecondPassword));
-        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForSecondPassword, World4State.SwimAway,
                 World4State.WaitForSecondPasswordAgain, waitForSecondPasswordAnswers));
 
@@ -338,44 +338,44 @@ public class World1 : MonoBehaviour
         
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.E, World6State.VoiceE));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceE, World6State.N, World6State.E, 
             new List<string>(){"Loud"}, false, true));
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.N, World6State.VoiceN));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceN, World6State.Th, World6State.N,
             new List<string>() { "Loud" }, false, true));
 
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.Th, World6State.VoiceTh));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceTh, World6State.The, World6State.Th,
             new List<string>() { "Loud" }, false, true));
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.The, World6State.VoiceThe));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceThe, World6State.C, World6State.The,
             new List<string>() { "Loud" }, false, true));
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.C, World6State.VoiceC));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceC, World6State.A, World6State.C,
             new List<string>() { "Loud" }, false, true));
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.A, World6State.VoiceA));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceA, World6State.Ve, World6State.A,
             new List<string>() { "Loud" }, false, true));
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.Ve, World6State.VoiceVe));
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceVe, World6State.InTheCave, World6State.Ve,
             new List<string>() { "Loud" }, false, true));
 
