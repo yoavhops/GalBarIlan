@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 10042965940376756}
   - component: {fileID: 1047321642545195028}
   - component: {fileID: 3222886169834653218}
+  - component: {fileID: 3169532743741998216}
   m_Layer: 0
   m_Name: Sea Animals-03Megi
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 88b5aae2a77fc774f83191be2e5d30cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4026f4f2a42a954e80d6a85f2f468b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,3 +111,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!95 &3169532743741998216
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204900353432530648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a553f97aead84da4ca557d083278934a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4740189430037405836}
   - component: {fileID: 749928757281358501}
   - component: {fileID: 4130538225075481979}
+  - component: {fileID: 7291460849295193865}
   m_Layer: 0
   m_Name: Sea Animals-05Tango
   m_TagString: Untagged
@@ -70,9 +71,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 115a68abe2769384199f81dddccf9fdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5554328aac181934895e51f61b03b87d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.61, y: 1.61}
@@ -110,3 +111,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!95 &7291460849295193865
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858183412421546248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 635394ea396a70349826b998c6e715c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

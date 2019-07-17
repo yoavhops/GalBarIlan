@@ -41,15 +41,12 @@ namespace KKSpeech {
         
 	    void Update()
 	    {
-	        if (SpeechRecognizer.IsRecording())
-	        {
-	            SpeechRecognizer.CheckMicrophoneMax();
+	        SpeechRecognizer.CheckMicrophoneMax();
 
-	            if (SpeechRecognizer.WasMicrophoneLoadEnough())
-	            {
-	                OnMicrophoneLoadEnough.Invoke();
-                }
-	        }
+	        if (SpeechRecognizer.WasMicrophoneLoadEnough())
+	        {
+	            OnMicrophoneLoadEnough.Invoke();
+            }
 	    }
 
         void AvailabilityDidChange(string available) {

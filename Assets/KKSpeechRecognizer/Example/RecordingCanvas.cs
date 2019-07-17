@@ -128,7 +128,7 @@ public class RecordingCanvas : MonoBehaviour {
     public void StartRecording(bool onlyLoudness)
     {
         if (AllowRecording &&
-            !SpeechRecognizer.IsRecording())
+            (!SpeechRecognizer.IsRecording() || Application.isEditor))
         {
             SpeechRecognizer.StartRecording(true, onlyLoudness);
             IsRecording = true;
@@ -148,13 +148,12 @@ public class RecordingCanvas : MonoBehaviour {
 		}
 	}
 
-    public void Stop()
+    public void StopRecording()
     {
+        IsRecording = false;
         if (SpeechRecognizer.IsRecording())
         {
             SpeechRecognizer.StopIfRecording();
-
-            IsRecording = false;
         }
     }
 

@@ -38,7 +38,7 @@ public class WaitForVoiceApprove : WorldState
         {
             _world1.RecordingCanvas.OnMicrophoneLoadEnoughEvent += OnMicrophoneLoadEnough;
         }
-        _world1.StartRecording();
+        _world1.StartRecording(_onlyLoudness);
     }
 
     private void OnMicrophoneLoadEnough()
@@ -81,6 +81,8 @@ public class WaitForVoiceApprove : WorldState
 
     public override void FinishState()
     {
+        _world1.StopRecording();
+
         _world1.RecordingCanvas.OnFinalResults -= HandleVoiceResult;
         _world1.RecordingCanvas.OnFailureToRecord -= HandleFailedRecord;
         if (_onlyLoudness)
