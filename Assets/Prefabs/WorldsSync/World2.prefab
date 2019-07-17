@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Debug: {fileID: 3119466208369822132}
-  Delay: 17
+  Delay: 0
 --- !u!1 &3119466208744238723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Debug: {fileID: 3119466209576000522}
-  Delay: 43.2
+  Delay: 0
 --- !u!1 &3119466209750599648
 GameObject:
   m_ObjectHideFlags: 0

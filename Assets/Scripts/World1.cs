@@ -300,7 +300,7 @@ public class World1 : MonoBehaviour
             World4State.RepeatSecondPassword, World4State.WaitForSecondPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForSecondPassword, World4State.SwimAway,
-                World4State.WaitForSecondPasswordAgain, waitForSecondPasswordAnswers));
+                World4State.RepeatSecondPassword, waitForSecondPasswordAnswers));
 
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.WaitForSecondPassword, waitForSecondPasswordAnswers[0], ShouldTestFailure);
 
