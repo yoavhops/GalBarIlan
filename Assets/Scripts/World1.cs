@@ -286,7 +286,7 @@ public class World1 : MonoBehaviour
             World4State.RepeatPassword, World4State.WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.WaitForFirstPassword, World4State.ClickOnSecondBoxRequest,
-                World4State.WaitForFirstPasswordAgain, waitForFirstPasswordAnswers));
+                World4State.RepeatPassword, waitForFirstPasswordAnswers));
 
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.WaitForFirstPassword, waitForFirstPasswordAnswers[0], ShouldTestFailure);
 
