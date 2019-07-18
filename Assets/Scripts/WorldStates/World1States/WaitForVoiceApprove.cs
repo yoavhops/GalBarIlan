@@ -6,6 +6,8 @@ using KKSpeech;
 
 public class WaitForVoiceApprove : WorldState
 {
+    private static bool _ALWAYS_ONLY_LOAD_ENOUGH = true;
+
     private int _failureState;
     private List<string> _correctVoiceAnswers;
     private bool _onlyLoudness;
@@ -16,6 +18,11 @@ public class WaitForVoiceApprove : WorldState
         bool allowIfLoadEnough = false, bool onlyLoudness = false) :
     base(world1, myState, NextState)
     {
+        if (_ALWAYS_ONLY_LOAD_ENOUGH)
+        {
+            allowIfLoadEnough = false;
+            onlyLoudness = true;
+        }
 
         if (onlyLoudness && allowIfLoadEnough)
         {

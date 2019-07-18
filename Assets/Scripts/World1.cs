@@ -21,6 +21,8 @@ public enum World2State
     ClickMegi = 2,
     MegiIntro = 3,
     ClickMegiAgain = 4,
+    PlayerClickMegiAgain = 22,
+    MegiIntroAgain = 33,
     WaitForMegiVoiceInput = 5,
     GoodJobMegi = 6,
     ClickTanog = 7,
@@ -225,8 +227,18 @@ public class World1 : MonoBehaviour
                     World2State.ClickMegi, World2State.MegiIntro, World2MegiClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                     World2State.MegiIntro, World2State.ClickMegiAgain));
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                World2State.ClickMegiAgain, World2State.PlayerClickMegiAgain));
+
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
-                    World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
+                World2State.PlayerClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
+
+        /*
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
+            */
+
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
                        waitForMegiAnswers, allowIfLoadEnough: true));
