@@ -6,7 +6,7 @@ using KKSpeech;
 
 public class WaitForVoiceApprove : WorldState
 {
-    private static bool _ALWAYS_ONLY_LOAD_ENOUGH = false;
+    private static bool _ALWAYS_ONLY_LOAD_ENOUGH = true;
 
     private int _failureState;
     private List<string> _correctVoiceAnswers;
