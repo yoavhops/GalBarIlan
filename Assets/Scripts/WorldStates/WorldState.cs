@@ -35,4 +35,9 @@ public abstract class WorldState
     public virtual void StartPart(){
         _world1.ChangeAnimatorPart((int)_thisState);
     }
+
+    public virtual void Update()
+    {
+    }
+
 }

@@ -43,7 +43,7 @@ namespace KKSpeech {
 	    {
 	        SpeechRecognizer.CheckMicrophoneMax();
 
-	        if (SpeechRecognizer.WasMicrophoneLoadEnough())
+	        if (SpeechRecognizer.IsMicrophoneLoadEnough())
 	        {
 	            OnMicrophoneLoadEnough.Invoke();
             }

@@ -7,11 +7,19 @@ using KKSpeech;
 public class WaitForVoiceApprove : WorldState
 {
     private static bool _ALWAYS_ONLY_LOAD_ENOUGH = true;
+    private static bool _MIC_TIME_CHECK = true;
 
     private int _failureState;
     private List<string> _correctVoiceAnswers;
     private bool _onlyLoudness;
     private bool _allowIfLoadEnough;
+
+    private bool _firstMicRecived = false;
+    private readonly float _timeSinceLastMic = 1f;
+    private float _currentTimeSinceLastMic;
+
+    private readonly float _failureTime = 3f;
+    private float _currentFailureTime;
 
     public WaitForVoiceApprove(World1 world1, int myState, int
     NextState, int stateAfterFailure, List<string> correctVoiceAnswers,
@@ -33,12 +41,17 @@ public class WaitForVoiceApprove : WorldState
         _allowIfLoadEnough = allowIfLoadEnough;
         _onlyLoudness = onlyLoudness;
         _failureState = stateAfterFailure;
-        _correctVoiceAnswers = correctVoiceAnswers; 
+        _correctVoiceAnswers = correctVoiceAnswers;
     }
 
     public override void StartPart()
     {
         base.StartPart();
+
+        _currentTimeSinceLastMic = _timeSinceLastMic;
+        _currentFailureTime = _failureTime;
+        _firstMicRecived = false;
+
         _world1.RecordingCanvas.OnFinalResults += HandleVoiceResult;
         _world1.RecordingCanvas.OnFailureToRecord += HandleFailedRecord;
         if (_onlyLoudness)
@@ -50,6 +63,13 @@ public class WaitForVoiceApprove : WorldState
 
     private void OnMicrophoneLoadEnough()
     {
+        if (_MIC_TIME_CHECK)
+        {
+            _firstMicRecived = true;
+            _currentTimeSinceLastMic = _timeSinceLastMic;
+            return;
+        }
+
         if (_onlyLoudness)
         {
             Success();
@@ -95,6 +115,33 @@ public class WaitForVoiceApprove : WorldState
         if (_onlyLoudness)
         {
             _world1.RecordingCanvas.OnMicrophoneLoadEnoughEvent -= OnMicrophoneLoadEnough;
+        }
+    }
+
+    public override void Update()
+    {
+        _currentFailureTime -= Time.deltaTime;
+
+        if (!_MIC_TIME_CHECK)
+        {
+            return;
+        }
+
+        if (_currentFailureTime < 0 && !_firstMicRecived)
+        {
+            Failure();
+            return;
+        }
+
+        if (_firstMicRecived)
+        {
+            _currentTimeSinceLastMic -= Time.deltaTime;
+
+            if (_currentTimeSinceLastMic < 0)
+            {
+                Success();
+                return;
+            }
         }
     }
 

@@ -66,7 +66,7 @@ namespace KKSpeech {
 	    private static int _sampleWindow = 128;
 	    private static float _currentMicrophoneMax = 0;
 	    private static float _loadEnough = 0.01f;
-	    private static float _waitBeforeMicrophoneCheck = 0.5f;
+	    private static float _waitBeforeMicrophoneCheck = 0.001f;
 	    private static float _startTimeForWaitBeforeMicrophoneCheck;
 
         //Yoav - units microphone
@@ -91,6 +91,12 @@ namespace KKSpeech {
 	    public static bool WasMicrophoneLoadEnough()
 	    {
 	        return _currentMicrophoneMax > _loadEnough;
+	    }
+
+	    public static bool IsMicrophoneLoadEnough()
+	    {
+	        var currentLevel = MicrophoneLevelMaxAtSample();
+            return currentLevel > _loadEnough;
 	    }
 
         public static void CheckMicrophoneMax()

@@ -490,7 +490,10 @@ public class World1 : MonoBehaviour
         {
             RecordingCanvas.OnFinalResults(VoiceAnswersMediator.GetVoiceAnswer(WorldNumber, _currentWorldState.GetWorldStateIndex()));
         }, 3f);
+    }
 
-
+    void Update()
+    {
+        _currentWorldState?.Update();
     }
 } 
