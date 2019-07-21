@@ -489,7 +489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1573781373558317317
 Transform:
   m_ObjectHideFlags: 0
@@ -613,6 +613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6974535059918672157}
+  - component: {fileID: 7011783753330805215}
   m_Layer: 0
   m_Name: RedFishHolder
   m_TagString: Untagged
@@ -635,6 +636,20 @@ Transform:
   m_Father: {fileID: 1573781373558317317}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7011783753330805215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628835460780128204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6eefcd4af113248a74de5f18db9172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  AnimationType: 0
 --- !u!1 &8618805319665651934
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +951,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6606122794745654242}
     m_Modifications:
+    - target: {fileID: 3971520329891905681, guid: 1621e55e4737612479f8e3b5480f779b,
+        type: 3}
+      propertyPath: m_Name
+      value: Sea Animals-02Octupos
+      objectReference: {fileID: 0}
     - target: {fileID: 3006344956067083788, guid: 1621e55e4737612479f8e3b5480f779b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,11 +1010,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971520329891905681, guid: 1621e55e4737612479f8e3b5480f779b,
-        type: 3}
-      propertyPath: m_Name
-      value: Sea Animals-02Octupos
       objectReference: {fileID: 0}
     - target: {fileID: 8829312585458218179, guid: 1621e55e4737612479f8e3b5480f779b,
         type: 3}
