@@ -703,11 +703,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3223780138155177850}
     m_Modifications:
-    - target: {fileID: 5975722483353469681, guid: e5529012afaefe340a00f8638d54d05e,
-        type: 3}
-      propertyPath: m_Name
-      value: Boy
-      objectReference: {fileID: 0}
     - target: {fileID: 5751226188432887355, guid: e5529012afaefe340a00f8638d54d05e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -762,6 +757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975722483353469681, guid: e5529012afaefe340a00f8638d54d05e,
+        type: 3}
+      propertyPath: m_Name
+      value: Boy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5529012afaefe340a00f8638d54d05e, type: 3}
@@ -784,11 +784,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 362963762949407583}
     m_Modifications:
-    - target: {fileID: 5412542007685526271, guid: c88a0eea826a2104980a912f2211160a,
-        type: 3}
-      propertyPath: m_Name
-      value: Girl
-      objectReference: {fileID: 0}
     - target: {fileID: 8552828766441373942, guid: c88a0eea826a2104980a912f2211160a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,6 +838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412542007685526271, guid: c88a0eea826a2104980a912f2211160a,
+        type: 3}
+      propertyPath: m_Name
+      value: Girl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c88a0eea826a2104980a912f2211160a, type: 3}

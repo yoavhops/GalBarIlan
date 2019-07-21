@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Items
+    uniqueID: 2863030037
+    locked: 0
+  - name: LiveThings
+    uniqueID: 738677573
+    locked: 0
+  - name: Medal
+    uniqueID: 1832660073
+    locked: 0

@@ -1458,8 +1458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 3
-  WorldStartNumber: 0
+  WorldNumber: 5
+  WorldStartNumber: 10
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
   Worlds:
@@ -1669,11 +1669,6 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
-    - target: {fileID: 2874072860510979642, guid: 11909f187218cea48bfd79fc43f0c2b7,
-        type: 3}
-      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAnimationEventDone
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
 --- !u!4 &1754724239 stripped
@@ -1973,7 +1968,7 @@ RectTransform:
   m_GameObject: {fileID: 1944943326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 757708352}
   m_RootOrder: 5
@@ -2132,6 +2127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037198220433783947, guid: 6d96d56572b98dd4cbe39230d35e2a53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037198220433783946, guid: 6d96d56572b98dd4cbe39230d35e2a53,
         type: 3}
@@ -2427,11 +2427,6 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
-    - target: {fileID: 224879640060482056, guid: 57721d5986d1b444096e680ad80cc728,
-        type: 3}
-      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAnimationEventDone
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
 --- !u!1 &3755581951540883342 stripped
