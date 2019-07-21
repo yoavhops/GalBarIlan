@@ -68,6 +68,23 @@ public enum World4State
     WaitForFirstPassword = 6,
     WaitForFirstPasswordAgain = 61,
     ClickOnSecondBoxRequest = 7,
+
+    //box2
+    Box2_WaitForClickOnFirstBox = 201,
+    Box2_RepeatPassword = 202,
+    Box2_WaitForFirstPassword = 203,
+
+    //box3
+    Box3_WaitForClickOnFirstBox = 301,
+    Box3_RepeatPassword = 302,
+    Box3_WaitForFirstPassword = 303,
+
+    //box4
+    Box4_WaitForClickOnFirstBox = 401,
+    Box4_RepeatPassword = 402,
+    Box4_WaitForFirstPassword = 403,
+
+
     WaitForClickOnSecondBox = 8,
     RepeatSecondPassword = 9,
     WaitForSecondPassword = 10,
@@ -149,7 +166,13 @@ public class World1 : MonoBehaviour
 
     [Header("World4 Links")]
     public OnClick World4FirstBoxClickable;
+    public OnClick World4Box2SecondBoxClickable;
+    public OnClick World4Box3SecondBoxClickable;
+    public OnClick World4Box4SecondBoxClickable;
     public OnClick World4SecondBoxClickable;
+
+    [Header("GeneralStates")]
+    public GameObject GeneralStatesCouldYouRepeatThat;
 
     [Header("TestSound")]
     public bool ShouldTestFailure;
@@ -378,7 +401,45 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World4State.WaitForFirstPasswordAgain, World4State.WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-            World4State.ClickOnSecondBoxRequest, World4State.WaitForClickOnSecondBox));
+            World4State.ClickOnSecondBoxRequest, World4State.Box2_WaitForClickOnFirstBox));
+
+        //box2
+        var Box2Answer = new List<string>() { "yes", "okay", "ok" };
+        World4State next = World4State.Box3_WaitForClickOnFirstBox;
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World4State.Box2_WaitForClickOnFirstBox, World4State.Box2_RepeatPassword, World4Box2SecondBoxClickable));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.Box2_RepeatPassword, World4State.Box2_WaitForFirstPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World4State.Box2_WaitForFirstPassword, next,
+            World4State.Box2_RepeatPassword, Box2Answer));
+        VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box2_WaitForFirstPassword, Box2Answer[0], ShouldTestFailure);
+
+        //box3
+        var Box3Answer = new List<string>() { "yes", "okay", "ok" };
+        next = World4State.Box4_WaitForClickOnFirstBox;
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World4State.Box3_WaitForClickOnFirstBox, World4State.Box3_RepeatPassword, World4Box3SecondBoxClickable));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.Box3_RepeatPassword, World4State.Box3_WaitForFirstPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World4State.Box3_WaitForFirstPassword, next,
+            World4State.Box3_RepeatPassword, Box3Answer));
+        VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box3_WaitForFirstPassword, Box3Answer[0], ShouldTestFailure);
+
+        //Box4
+        var Box4Answer = new List<string>() { "yes", "okay", "ok" };
+        next = World4State.WaitForClickOnSecondBox;
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World4State.Box4_WaitForClickOnFirstBox, World4State.Box4_RepeatPassword, World4Box4SecondBoxClickable));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World4State.Box4_RepeatPassword, World4State.Box4_WaitForFirstPassword));
+        WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World4State.Box4_WaitForFirstPassword, next,
+            World4State.Box4_RepeatPassword, Box4Answer));
+        VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box4_WaitForFirstPassword, Box4Answer[0], ShouldTestFailure);
+
+
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
             World4State.WaitForClickOnSecondBox, World4State.RepeatSecondPassword, World4SecondBoxClickable));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
