@@ -21,9 +21,13 @@ public class WaitForVoiceApprove : WorldState
     private readonly float _failureTime = 3f;
     private float _currentFailureTime;
 
+    private bool _useNegativeFeedbackWorldState = true;
+    private bool _usePositiveFeedbackWorldState = true;
+
     public WaitForVoiceApprove(World1 world1, int myState, int
     NextState, int stateAfterFailure, List<string> correctVoiceAnswers,
-        bool allowIfLoadEnough = false, bool onlyLoudness = false) :
+        bool allowIfLoadEnough = false, bool onlyLoudness = false,
+        bool useNegativeFeedbackWorldState = false, bool usePositiveFeedbackWorldState = false) :
     base(world1, myState, NextState)
     {
         if (_ALWAYS_ONLY_LOAD_ENOUGH)
@@ -38,6 +42,8 @@ public class WaitForVoiceApprove : WorldState
             allowIfLoadEnough = false;
         }
 
+        _usePositiveFeedbackWorldState = usePositiveFeedbackWorldState;
+        _useNegativeFeedbackWorldState = useNegativeFeedbackWorldState;
         _allowIfLoadEnough = allowIfLoadEnough;
         _onlyLoudness = onlyLoudness;
         _failureState = stateAfterFailure;
@@ -103,7 +109,24 @@ public class WaitForVoiceApprove : WorldState
             return;
         }
 
+        if (_useNegativeFeedbackWorldState)
+        {
+            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _failureState, 1.5f, _world1.GeneralStatesCouldYouRepeatThat));
+            return;
+        }
+
         _world1.ChangeWorldState(_failureState);
+    }
+
+    protected override void Success()
+    {
+        if (_usePositiveFeedbackWorldState)
+        {
+            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _nextState, 1f, _world1.GeneralStatesGoodUI));
+            return;
+        }
+
+        _world1.ChangeWorldState(_nextState);
     }
 
     public override void FinishState()
