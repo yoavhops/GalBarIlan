@@ -570,6 +570,15 @@ public class World1 : MonoBehaviour
         _currentWorldState.StartPart();
     }
 
+    public void ChangeToTempWorldState(WorldState tempWorldState)
+    {
+        _currentWorldState?.FinishState();
+        _currentWorldState = null;
+
+        _currentWorldState = tempWorldState;
+        _currentWorldState.StartPart();
+    }
+
     private WorldState WorldEnumToState(int enumState)
     {
         return WorldToStateDictionary[WorldNumber][enumState];
