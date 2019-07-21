@@ -1298,8 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 3
-  WorldStartNumber: 0
+  WorldNumber: 1
+  WorldStartNumber: 5
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
   Worlds:
@@ -1313,6 +1313,9 @@ MonoBehaviour:
   World1StarFishClickable: {fileID: 1951475405}
   World2MegiClickable: {fileID: 3119466209353858214}
   World2TanogClickable: {fileID: 3119466209353858215}
+  World2KriparClickable: {fileID: 3119466209353858218}
+  World2SpieClickable: {fileID: 3119466209353858217}
+  World2ToginClickable: {fileID: 3119466209353858216}
   World4FirstBoxClickable: {fileID: 2037198218837318253}
   World4SecondBoxClickable: {fileID: 2037198218837318251}
   ShouldTestFailure: 1
@@ -1446,6 +1449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465605657812719229, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
@@ -1818,18 +1826,6 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnAnimationEventDone
       objectReference: {fileID: 0}
-    - target: {fileID: 882471399, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 684221942, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 561834606, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4515176690618380678, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
       propertyPath: m_Sprite
@@ -1850,6 +1846,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 882471399, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 684221942, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 561834606, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
+      propertyPath: AnimationType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
@@ -1971,11 +1979,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World2
       objectReference: {fileID: 0}
-    - target: {fileID: 3119466209750599648, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2052,6 +2055,42 @@ MonoBehaviour:
 --- !u!114 &3119466209353858215 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1933358350665508268, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+    type: 3}
+  m_PrefabInstance: {fileID: 3119466209353858213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac76faf0d8f18749812bf88fd371602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3119466209353858216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4793315599229166664, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+    type: 3}
+  m_PrefabInstance: {fileID: 3119466209353858213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac76faf0d8f18749812bf88fd371602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3119466209353858217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5161442997710523223, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+    type: 3}
+  m_PrefabInstance: {fileID: 3119466209353858213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac76faf0d8f18749812bf88fd371602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3119466209353858218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7081603980389778023, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
     type: 3}
   m_PrefabInstance: {fileID: 3119466209353858213}
   m_PrefabAsset: {fileID: 0}
@@ -2138,6 +2177,16 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a9922fbc4cb11064d902b3f6bab57969, type: 3}
+    - target: {fileID: 7911112993283391827, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 275200438, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
       propertyPath: AnimationType
       value: 0
@@ -2146,16 +2195,6 @@ PrefabInstance:
       propertyPath: AnimationType
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7911112993283391827, guid: 57721d5986d1b444096e680ad80cc728,
-        type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a9922fbc4cb11064d902b3f6bab57969, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
 --- !u!1 &3755581951540883342 stripped

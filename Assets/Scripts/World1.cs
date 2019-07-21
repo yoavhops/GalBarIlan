@@ -25,6 +25,22 @@ public enum World2State
     MegiIntroAgain = 33,
     WaitForMegiVoiceInput = 5,
     GoodJobMegi = 6,
+
+    ClickKripar = 121,
+    RepeatKripar = 122,
+    WaitForKriparVoiceInput = 123,
+    GoodJobKripar = 124,
+
+    ClickSpie = 131,
+    RepeatSpie = 132,
+    WaitForSpieVoiceInput = 133,
+    GoodJobSpie = 134,
+
+    ClickTogin = 141,
+    RepeatTogin = 142,
+    WaitForToginVoiceInput = 143,
+    GoodJobTogin = 144,
+
     ClickTanog = 7,
     RepeatTanog = 8,
     WaitForTanogVoiceInput = 9,
@@ -127,6 +143,9 @@ public class World1 : MonoBehaviour
     [Header("World2 Links")]
     public OnClick World2MegiClickable;
     public OnClick World2TanogClickable;
+    public OnClick World2KriparClickable;
+    public OnClick World2SpieClickable;
+    public OnClick World2ToginClickable;
 
     [Header("World4 Links")]
     public OnClick World4FirstBoxClickable;
@@ -216,8 +235,6 @@ public class World1 : MonoBehaviour
 
     private void InitWorld1DictionaryAndVoiceAnswers()
     {
-        var waitForMegiAnswers = new List<string>() { "Megi", "Mago", "Mango", "margo", "margaret", "Magat" };
-        var waitForTanogAnswers = new List<string>() { "Tango", "Tanog" };
 
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this, 
                     World2State.ChangeScreens, World2State.Intro));
@@ -239,6 +256,7 @@ public class World1 : MonoBehaviour
             World2State.ClickMegiAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
             */
 
+        var waitForMegiAnswers = new List<string>() { "Megi", "Mago", "Mango", "margo", "margaret", "Magat" };
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.MegiIntro,
                        waitForMegiAnswers, allowIfLoadEnough: true));
@@ -246,7 +264,62 @@ public class World1 : MonoBehaviour
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
 
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-                    World2State.GoodJobMegi, World2State.ClickTanog));
+                    World2State.GoodJobMegi, World2State.ClickKripar));
+
+        /*Kripar*/
+
+        var waitForKriparAnswers = new List<string>() { "Kripar"};
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World2State.ClickKripar, World2State.RepeatKripar, World2KriparClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.RepeatKripar, World2State.WaitForKriparVoiceInput));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World2State.WaitForKriparVoiceInput, World2State.GoodJobKripar, World2State.ClickKripar,
+            waitForKriparAnswers, allowIfLoadEnough: true));
+
+        VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForKriparVoiceInput, waitForKriparAnswers[0], ShouldTestFailure);
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.GoodJobKripar, World2State.ClickSpie));
+
+        /*Spie*/
+
+        var waitForSpieAnswers = new List<string>() { "Spie" };
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World2State.ClickSpie, World2State.RepeatSpie, World2SpieClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.RepeatSpie, World2State.WaitForSpieVoiceInput));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World2State.WaitForSpieVoiceInput, World2State.GoodJobSpie, World2State.ClickSpie,
+            waitForSpieAnswers, allowIfLoadEnough: true));
+
+        VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForSpieVoiceInput, waitForSpieAnswers[0], ShouldTestFailure);
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.GoodJobSpie, World2State.ClickTogin));
+        
+        /*Togin*/
+
+        var waitForToginAnswers = new List<string>() { "Togin" };
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
+            World2State.ClickTogin, World2State.RepeatTogin, World2ToginClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.RepeatTogin, World2State.WaitForToginVoiceInput));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            World2State.WaitForToginVoiceInput, World2State.GoodJobTogin, World2State.ClickTogin,
+            waitForToginAnswers, allowIfLoadEnough: true));
+
+        VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForToginVoiceInput, waitForToginAnswers[0], ShouldTestFailure);
+
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.GoodJobTogin, World2State.ClickTanog));
+        
+        /*Tanog*/
+        var waitForTanogAnswers = new List<string>() { "Tango", "Tanog" };
+
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
             World2State.ClickTanog, World2State.RepeatTanog, World2TanogClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
