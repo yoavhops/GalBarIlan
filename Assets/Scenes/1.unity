@@ -1510,11 +1510,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World7
       objectReference: {fileID: 0}
-    - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1613,11 +1608,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World5
       objectReference: {fileID: 0}
-    - target: {fileID: 2465605657812719229, guid: 11909f187218cea48bfd79fc43f0c2b7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1678,6 +1668,11 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 2874072860510979642, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAnimationEventDone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
 --- !u!4 &1754724239 stripped
@@ -1749,7 +1744,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b8b07f034d03f3f45b37368630ae3dd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1afbdb36f6c3498458749a95646ba496, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1921,11 +1916,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World1
       objectReference: {fileID: 0}
-    - target: {fileID: 720759166960974304, guid: 51a2a8776bfaca14c85867ed386bb6e9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 720759166960974305, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1988,39 +1978,6 @@ PrefabInstance:
     - target: {fileID: 1441120158, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnAnimationEventDone
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515176690618380678, guid: 51a2a8776bfaca14c85867ed386bb6e9,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ec0ca1c90e64cfe4793cebc24cb216c6,
-        type: 3}
-    - target: {fileID: 4515176690618380678, guid: 51a2a8776bfaca14c85867ed386bb6e9,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515176690618380678, guid: 51a2a8776bfaca14c85867ed386bb6e9,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515176690618380678, guid: 51a2a8776bfaca14c85867ed386bb6e9,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 882471399, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 684221942, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 561834606, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
-      propertyPath: AnimationType
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51a2a8776bfaca14c85867ed386bb6e9, type: 3}
@@ -2145,11 +2102,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World2
       objectReference: {fileID: 0}
-    - target: {fileID: 3119466209750599648, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2209,10 +2161,9 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
-    - target: {fileID: 2867494735822167270, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 408566600, guid: c8ccb6f482fed1f4f9261d7e2aae3c96, type: 3}
+      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAnimationEventDone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ccb6f482fed1f4f9261d7e2aae3c96, type: 3}
@@ -2288,11 +2239,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: World6
       objectReference: {fileID: 0}
-    - target: {fileID: 2998580128968396001, guid: 57721d5986d1b444096e680ad80cc728,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2353,23 +2299,10 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
-    - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
+    - target: {fileID: 224879640060482056, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a9922fbc4cb11064d902b3f6bab57969, type: 3}
-    - target: {fileID: 7911112993283391827, guid: 57721d5986d1b444096e680ad80cc728,
-        type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 275200438, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
-      propertyPath: AnimationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 105705155, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
-      propertyPath: AnimationType
-      value: 0
+      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAnimationEventDone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
@@ -2420,11 +2353,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203168060234855996, guid: 388b06092bc2ca545848fd4670f11699,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8203168060234855995, guid: 388b06092bc2ca545848fd4670f11699,
         type: 3}
@@ -2485,5 +2413,9 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 322825462, guid: 388b06092bc2ca545848fd4670f11699, type: 3}
+      propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAnimationEventDone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 388b06092bc2ca545848fd4670f11699, type: 3}
