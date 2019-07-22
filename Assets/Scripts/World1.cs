@@ -145,6 +145,7 @@ public class World1 : MonoBehaviour
     public WorldState _currentWorldState;
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
+    public GameObject Menu;
 
     private Dictionary<int, IDictionary<int, WorldState>> WorldToStateDictionary;
     private Dictionary<int, int> WorldToLastStateDictionary;
@@ -554,6 +555,13 @@ public class World1 : MonoBehaviour
             World7State.SwimOut, World7State.NextWorld));
     }
 
+    public void MenuChangeWorld(int worldIndex)
+    {
+        WorldNumber = worldIndex;
+        Menu?.SetActive(false);
+        Animator.SetTrigger("ChangeState");
+        ChangeWorld();
+    }
 
     private void ChangeWorld()
     {
