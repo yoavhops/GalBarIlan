@@ -145,7 +145,7 @@ public class World1 : MonoBehaviour
     public WorldState _currentWorldState;
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
-    public GameObject Menu;
+    private Animator _currentWorldAnimator;
 
     private Dictionary<int, IDictionary<int, WorldState>> WorldToStateDictionary;
     private Dictionary<int, int> WorldToLastStateDictionary;
@@ -558,14 +558,30 @@ public class World1 : MonoBehaviour
     public void MenuChangeWorld(int worldIndex)
     {
         WorldNumber = worldIndex;
-        Menu?.SetActive(false);
+        _currentWorldAnimator = _currentWorld?.GetComponent<Animator>();
+        _currentWorldAnimator?.SetTrigger("Finish");
+        StartCoroutine("DelayAnimatorTurnOff");
+
+    }
+
+    public IEnumerator DelayAnimatorTurnOff()
+    {
+        yield return null;
         Animator.SetTrigger("ChangeState");
         ChangeWorld();
+        yield break;
+    }
+
+    public void MenuQuit()
+    {
+        Application.Quit();
     }
 
     private void ChangeWorld()
     {
+
         _currentWorld?.SetActive(false);
+
         Worlds[WorldNumber].SetActive(true);
         _currentWorld = Worlds[WorldNumber];
 
