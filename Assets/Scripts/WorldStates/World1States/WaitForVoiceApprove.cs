@@ -122,7 +122,7 @@ public class WaitForVoiceApprove : WorldState
     {
         if (_usePositiveFeedbackWorldState)
         {
-            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _nextState, 1f, _world1.GeneralStatesGoodUI));
+            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _nextState, 0.1f, _world1.GeneralStatesGoodUI));
             return;
         }
 

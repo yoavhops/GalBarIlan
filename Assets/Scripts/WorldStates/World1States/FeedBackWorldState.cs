@@ -25,7 +25,8 @@ public class FeedBackWorldState : WorldState
     public override void StartPart()
     {
         _currentDelay = _delay;
-        _gameObject.SetActive(true);
+        var obj = MonoBehaviour.Instantiate(_gameObject);
+        obj.SetActive(true);
     }
 
     public override void Update()
@@ -37,11 +38,5 @@ public class FeedBackWorldState : WorldState
             Success();
         }
     }
-
-    protected override void Success()
-    {
-        _gameObject.SetActive(false);
-        base.Success();
-    }
-
+    
 }
