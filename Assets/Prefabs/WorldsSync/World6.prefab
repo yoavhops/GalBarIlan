@@ -997,7 +997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681789935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.32, y: 2.99, z: 0}
+  m_LocalPosition: {x: -3.06, y: 3.53, z: 0}
   m_LocalScale: {x: 0.406, y: 0.406, z: 0.406}
   m_Children:
   - {fileID: 419721319}
@@ -2112,6 +2112,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 101226618}
     m_Modifications:
+    - target: {fileID: 8179943459357005946, guid: 5cf68f6a250deab4d8d1d39d9ac6b525,
+        type: 3}
+      propertyPath: m_Name
+      value: coral4
+      objectReference: {fileID: 0}
     - target: {fileID: 3070818627114856610, guid: 5cf68f6a250deab4d8d1d39d9ac6b525,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2166,11 +2171,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8179943459357005946, guid: 5cf68f6a250deab4d8d1d39d9ac6b525,
-        type: 3}
-      propertyPath: m_Name
-      value: coral4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf68f6a250deab4d8d1d39d9ac6b525, type: 3}
@@ -2274,6 +2274,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8041631978011605741}
     m_Modifications:
+    - target: {fileID: 5412542007685526271, guid: c88a0eea826a2104980a912f2211160a,
+        type: 3}
+      propertyPath: m_Name
+      value: Girl
+      objectReference: {fileID: 0}
     - target: {fileID: 8552828766441373942, guid: c88a0eea826a2104980a912f2211160a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2334,11 +2339,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 5412542007685526271, guid: c88a0eea826a2104980a912f2211160a,
-        type: 3}
-      propertyPath: m_Name
-      value: Girl
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c88a0eea826a2104980a912f2211160a, type: 3}
 --- !u!95 &5549657022209522604 stripped
@@ -2360,6 +2360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523507573}
     m_Modifications:
+    - target: {fileID: 2000700981853790083, guid: 85ea355e1082b14419847d60e941dc02,
+        type: 3}
+      propertyPath: m_Name
+      value: coral1
+      objectReference: {fileID: 0}
     - target: {fileID: 5880273096546318775, guid: 85ea355e1082b14419847d60e941dc02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2415,11 +2420,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2000700981853790083, guid: 85ea355e1082b14419847d60e941dc02,
-        type: 3}
-      propertyPath: m_Name
-      value: coral1
-      objectReference: {fileID: 0}
     - target: {fileID: 7601252198314106802, guid: 85ea355e1082b14419847d60e941dc02,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2446,6 +2446,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2927137258349053364}
     m_Modifications:
+    - target: {fileID: 5975722483353469681, guid: e5529012afaefe340a00f8638d54d05e,
+        type: 3}
+      propertyPath: m_Name
+      value: Boy
+      objectReference: {fileID: 0}
     - target: {fileID: 5751226188432887355, guid: e5529012afaefe340a00f8638d54d05e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2506,11 +2511,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5975722483353469681, guid: e5529012afaefe340a00f8638d54d05e,
-        type: 3}
-      propertyPath: m_Name
-      value: Boy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5529012afaefe340a00f8638d54d05e, type: 3}
 --- !u!95 &176125358823241342 stripped
@@ -2532,6 +2532,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 667810128}
     m_Modifications:
+    - target: {fileID: 6737774381318097287, guid: 16a3147cdb73f8d4a95c35ce97d9f21c,
+        type: 3}
+      propertyPath: m_Name
+      value: coral3
+      objectReference: {fileID: 0}
     - target: {fileID: 4253475134491566853, guid: 16a3147cdb73f8d4a95c35ce97d9f21c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2586,11 +2591,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6737774381318097287, guid: 16a3147cdb73f8d4a95c35ce97d9f21c,
-        type: 3}
-      propertyPath: m_Name
-      value: coral3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a3147cdb73f8d4a95c35ce97d9f21c, type: 3}
