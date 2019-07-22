@@ -39,6 +39,14 @@ public class RecordingCanvas : MonoBehaviour {
         SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 
         if (SpeechRecognizer.ExistsOnDevice()) {
+
+            if (WaitForVoiceApprove._ALWAYS_ONLY_LOAD_ENOUGH)
+            {
+                listener.OnMicrophoneLoadEnough.AddListener(OnMicrophoneLoadEnough);
+                AllowRecording = true;
+                return;
+            }
+
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
 			listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
 			listener.onErrorDuringRecording.AddListener(OnError);

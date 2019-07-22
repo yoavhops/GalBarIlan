@@ -6,8 +6,8 @@ using KKSpeech;
 
 public class WaitForVoiceApprove : WorldState
 {
-    private static bool _ALWAYS_ONLY_LOAD_ENOUGH = true;
-    private static bool _MIC_TIME_CHECK = true;
+    public static bool _ALWAYS_ONLY_LOAD_ENOUGH = true;
+    public static bool _MIC_TIME_CHECK = true;
 
     private int _failureState;
     private List<string> _correctVoiceAnswers;

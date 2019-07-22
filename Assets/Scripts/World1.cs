@@ -189,6 +189,9 @@ public class World1 : MonoBehaviour
         ChangeWorld();
 
         ChangeWorldState(WorldStartNumber);
+
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
     }
 
     private void TurnOffAllWorlds()

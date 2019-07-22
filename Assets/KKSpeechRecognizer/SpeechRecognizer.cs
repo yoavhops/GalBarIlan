@@ -42,6 +42,12 @@ namespace KKSpeech {
 		        StartMicrophone();
 		    }
 
+		    if (WaitForVoiceApprove._ALWAYS_ONLY_LOAD_ENOUGH)
+		    {
+		        StartMicrophone();
+                return true;
+		    }
+
             #if UNITY_IOS && !UNITY_EDITOR
 			return iOSSpeechRecognizer._EngineExists();
 			#elif UNITY_ANDROID && !UNITY_EDITOR
@@ -137,6 +143,12 @@ namespace KKSpeech {
 
 
         public static bool IsRecording() {
+            
+            if (WaitForVoiceApprove._ALWAYS_ONLY_LOAD_ENOUGH)
+            {
+                return true;
+            }
+
 			#if UNITY_IOS && !UNITY_EDITOR
 			return iOSSpeechRecognizer._IsRecording();
 			#elif UNITY_ANDROID && !UNITY_EDITOR
