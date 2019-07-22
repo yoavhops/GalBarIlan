@@ -1223,6 +1223,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &893828330 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4344896971170868373, guid: 11909f187218cea48bfd79fc43f0c2b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1754724238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &975037826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,8 +1936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 4
-  WorldStartNumber: 3
+  WorldNumber: 3
+  WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
   Worlds:
@@ -1983,6 +1989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
@@ -2355,6 +2366,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.22
       objectReference: {fileID: 0}
+    - target: {fileID: 7011783753330805215, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 893828330}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
 --- !u!4 &1754724239 stripped
@@ -3112,7 +3128,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
