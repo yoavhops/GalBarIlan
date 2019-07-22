@@ -71,8 +71,8 @@ namespace KKSpeech {
         private static AudioClip _clipRecord;
 	    private static int _sampleWindow = 128;
 	    private static float _currentMicrophoneMax = 0;
-	    private static float _loadEnough = 0.02f;
-	    private static float _waitBeforeMicrophoneCheck = 0.1f;
+	    private static float _loadEnough = 0.045f;
+	    private static float _waitBeforeMicrophoneCheck = 0.2f;
 	    private static float _startTimeForWaitBeforeMicrophoneCheck;
 
         //Yoav - units microphone
