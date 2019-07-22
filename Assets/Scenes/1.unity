@@ -1357,7 +1357,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
@@ -1956,6 +1956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World2
       objectReference: {fileID: 0}
+    - target: {fileID: 3119466209750599648, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2015,6 +2020,26 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 3119466209171812912, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119466209171812912, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119466209171812912, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119466209171812912, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.74
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ccb6f482fed1f4f9261d7e2aae3c96, type: 3}
 --- !u!114 &3119466209353858214 stripped
