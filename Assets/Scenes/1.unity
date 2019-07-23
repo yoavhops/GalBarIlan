@@ -2780,11 +2780,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 5
+  WorldNumber: 0
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
   Menu: {fileID: 785905369}
+  Volume: 3
   Worlds:
   - {fileID: 1441120156}
   - {fileID: 408566597}
@@ -2994,7 +2995,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
@@ -4033,7 +4034,7 @@ PrefabInstance:
     - target: {fileID: 3119466209750599648, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119466209750599651, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
         type: 3}

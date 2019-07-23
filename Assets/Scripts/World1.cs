@@ -146,6 +146,7 @@ public class World1 : MonoBehaviour
     public Animator Animator;
     public RecordingCanvas RecordingCanvas;
     public GameObject Menu;
+    public float Volume = 1f;
 
     private Dictionary<int, IDictionary<int, WorldState>> WorldToStateDictionary;
     private Dictionary<int, int> WorldToLastStateDictionary;
@@ -192,6 +193,8 @@ public class World1 : MonoBehaviour
         ChangeWorldState(WorldStartNumber);
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        AudioListener.volume = Volume;
 
     }
 
@@ -279,8 +282,8 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
                 World2State.PlayerClickMegiAgain, World2State.MegiIntroAgain, World2MegiClickable));
         
-        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
-            World2State.MegiIntroAgain, World2State.WaitForMegiVoiceInput, World2MegiClickable));
+        WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World2State.MegiIntroAgain, World2State.WaitForMegiVoiceInput));
         
         /*
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
