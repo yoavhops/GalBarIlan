@@ -292,7 +292,7 @@ public class World1 : MonoBehaviour
 
         var waitForMegiAnswers = new List<string>() { "Megi", "Mago", "Mango", "margo", "margaret", "Magat" };
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-                    World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.WaitForMegiVoiceInput,
+                    World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.ClickMegi,
                        waitForMegiAnswers, false, false, true, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
@@ -309,7 +309,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World2State.RepeatKripar, World2State.WaitForKriparVoiceInput));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-            World2State.WaitForKriparVoiceInput, World2State.GoodJobKripar, World2State.WaitForKriparVoiceInput,
+            World2State.WaitForKriparVoiceInput, World2State.GoodJobKripar, World2State.ClickKripar,
             waitForKriparAnswers, false, false, true, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForKriparVoiceInput, waitForKriparAnswers[0], ShouldTestFailure);
@@ -326,7 +326,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World2State.RepeatSpie, World2State.WaitForSpieVoiceInput));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-            World2State.WaitForSpieVoiceInput, World2State.GoodJobSpie, World2State.WaitForSpieVoiceInput,
+            World2State.WaitForSpieVoiceInput, World2State.GoodJobSpie, World2State.ClickSpie,
             waitForSpieAnswers, false, false, true, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForSpieVoiceInput, waitForSpieAnswers[0], ShouldTestFailure);
@@ -343,7 +343,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World2State.RepeatTogin, World2State.WaitForToginVoiceInput));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-            World2State.WaitForToginVoiceInput, World2State.GoodJobTogin, World2State.WaitForToginVoiceInput,
+            World2State.WaitForToginVoiceInput, World2State.GoodJobTogin, World2State.ClickTogin,
             waitForToginAnswers, false, false, true, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForToginVoiceInput, waitForToginAnswers[0], ShouldTestFailure);
@@ -359,7 +359,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World2State.RepeatTanog, World2State.WaitForTanogVoiceInput));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-                    World2State.WaitForTanogVoiceInput, World2State.GoodJobTanog, World2State.WaitForTanogVoiceInput,
+                    World2State.WaitForTanogVoiceInput, World2State.GoodJobTanog, World2State.ClickTanog,
                        waitForTanogAnswers, false, false, true, false));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForTanogVoiceInput, waitForTanogAnswers[0], ShouldTestFailure);
