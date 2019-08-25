@@ -274,7 +274,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this, 
                     World2State.ClickMegi, World2State.MegiIntro, World2MegiClickable));
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-                    World2State.MegiIntro, World2State.ClickMegiAgain));
+                    World2State.MegiIntro, World2State.WaitForMegiVoiceInput));
 
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                 World2State.ClickMegiAgain, World2State.PlayerClickMegiAgain));

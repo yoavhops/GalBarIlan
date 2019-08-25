@@ -111,7 +111,7 @@ public class WaitForVoiceApprove : WorldState
 
         if (_useNegativeFeedbackWorldState)
         {
-            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _failureState, 1.5f, _world1.GeneralStatesCouldYouRepeatThat));
+            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _failureState, 3, _world1.GeneralStatesCouldYouRepeatThat));
             return;
         }
 
