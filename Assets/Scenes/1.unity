@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 3
+  WorldNumber: 4
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
@@ -3540,6 +3540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World5
       objectReference: {fileID: 0}
+    - target: {fileID: 2465605657812719229, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3600,6 +3605,27 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 495279308, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c90c024da6ea59428141b9ae8ced904, type: 3}
+    - target: {fileID: 525219848, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2fc0af6d87080cc4fa899de683e5a1ea, type: 3}
+    - target: {fileID: 525219847, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
+      propertyPath: Delay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 943151041, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2fc0af6d87080cc4fa899de683e5a1ea, type: 3}
+    - target: {fileID: 7011783753330805215, guid: 11909f187218cea48bfd79fc43f0c2b7,
+        type: 3}
+      propertyPath: AnimationType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11909f187218cea48bfd79fc43f0c2b7, type: 3}
 --- !u!4 &1754724239 stripped
@@ -4319,7 +4345,7 @@ PrefabInstance:
     - target: {fileID: 2037198220433783947, guid: 6d96d56572b98dd4cbe39230d35e2a53,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037198220433783946, guid: 6d96d56572b98dd4cbe39230d35e2a53,
         type: 3}
@@ -4388,6 +4414,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 038a5bd0150e46d44a9bc5a15c80946e, type: 3}
+    - target: {fileID: 493894855, guid: 6d96d56572b98dd4cbe39230d35e2a53, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f467c7a6bac734468c32d500985e930, type: 3}
     - target: {fileID: 1051536969, guid: 6d96d56572b98dd4cbe39230d35e2a53, type: 3}
       propertyPath: m_audioClip
       value: 
