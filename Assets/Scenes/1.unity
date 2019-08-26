@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 4
+  WorldNumber: 5
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
@@ -3543,7 +3543,7 @@ PrefabInstance:
     - target: {fileID: 2465605657812719229, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1573781373558317317, guid: 11909f187218cea48bfd79fc43f0c2b7,
         type: 3}
@@ -4692,7 +4692,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
@@ -4754,6 +4754,11 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54200d50efaa0b4418ec6e0a65c94df0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
 --- !u!1 &3755581951540883342 stripped

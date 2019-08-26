@@ -108,20 +108,52 @@ public enum World6State
     ChangeScreens = 0,
     Intro = 1,
 
-    E = 2,
-    VoiceE = 21,
-    N = 3,
-    VoiceN = 31,
-    Th = 4,
-    VoiceTh = 41,
-    The = 5,
-    VoiceThe = 51,
-    C = 6,
-    VoiceC = 61,
-    A = 7,
-    VoiceA = 71,
-    Ve = 8,
-    VoiceVe = 81,
+    //English   //  0102 ===  0 = english, 1/2 = sound/recording, 02 = first latter 
+    E = 0102,
+    VoiceE = 0202,
+    N = 0103,
+    VoiceN = 0203,
+    Th = 0104,
+    VoiceTh = 0204,
+    The = 0105,
+    VoiceThe = 0205,
+    C = 0106,
+    VoiceC = 0206,
+    A = 0107,
+    VoiceA = 0207,
+    Ve = 0108,
+    VoiceVe = 0208,
+
+
+    //Hebrew   //  0102 ===  1 = Hebrew, 1/2 = sound/recording, 02 = first latter 
+    Heb_24 = 1102,
+    Heb_Voice24 = 1202,
+    Heb_25 = 1103,
+    Heb_Voice25 = 1203,
+    Heb_26 = 1104,
+    Heb_Voice26 = 1204,
+    Heb_27 = 1105,
+    Heb_Voice27 = 1205,
+    Heb_28 = 1106,
+    Heb_Voice28 = 1206,
+    Heb_29 = 1107,
+    Heb_Voice29 = 1207,
+    Heb_30 = 1108,
+    Heb_Voice30 = 1208,
+    Heb_31 = 1109,
+    Heb_Voice31 = 1209,
+    Heb_32 = 1110,
+    Heb_Voice32 = 1210,
+    Heb_33 = 1111,
+    Heb_Voice33 = 1211,
+    Heb_34 = 1112,
+    Heb_Voice34 = 1212,
+    Heb_35 = 1113,
+    Heb_Voice35 = 1213,
+    Heb_36 = 1114,
+    Heb_Voice36 = 1214,
+    Heb_37 = 1115,
+    Heb_Voice37 = 1215,
 
     InTheCave = 9,
 
@@ -499,9 +531,31 @@ public class World1 : MonoBehaviour
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.Intro, World6State.E));
-        
+
+        int firstLaterValue = (int)World6State.E;
+        int lastLaterValue = (int)World6State.Ve;
+
+        for (int soundIndex = firstLaterValue; soundIndex < lastLaterValue; soundIndex++)
+        {
+            var VOIndex = soundIndex + 100;
+            WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+                (World6State)soundIndex, (World6State)VOIndex));
+            WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+                    (World6State)VOIndex, (World6State)(soundIndex + 1), (World6State)soundIndex,
+                new List<string>() { "Loud" }, false, true));
+        }
+
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-            World6State.E, World6State.VoiceE));
+            (World6State)lastLaterValue, (World6State)(lastLaterValue + 100)));
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
+            (World6State)lastLaterValue, World6State.InTheCave, (World6State)lastLaterValue,
+            new List<string>() { "Loud" }, false, true));
+
+        /*
+
+
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            (World6State)firstLaterValue, (World6State)firstLaterValue + 100));
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceE, World6State.N, World6State.E, 
             new List<string>(){"Loud"}, false, true));
@@ -542,6 +596,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World6State.VoiceVe, World6State.InTheCave, World6State.Ve,
             new List<string>() { "Loud" }, false, true));
+            */
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.InTheCave, World6State.SwimOut));
