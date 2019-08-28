@@ -207,10 +207,27 @@ public class World1 : MonoBehaviour
 
     [Header("GeneralStates")]
     public GameObject GeneralStatesCouldYouRepeatThat;
+    public GameObject GeneralStateNoClickWorld2;
+    public GameObject GeneralStateNoClickWorld4;
     public GameObject GeneralStatesGoodUI;
 
     [Header("TestSound")]
     public bool ShouldTestFailure;
+
+    public GameObject GeneralStateNoClick()
+    {
+        if (WorldNumber <= 1)
+        {
+            return GeneralStateNoClickWorld2;
+        }
+
+        if (WorldNumber == 3)
+        {
+            return GeneralStateNoClickWorld4;
+        }
+
+        return null;
+    }
 
     void Awake()
     {
@@ -279,7 +296,7 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                 World1State.Introduction, World1State.WaitForClickOnStarFish));
         WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToClickWorldStateKeyValuePair(this,
-                World1State.WaitForClickOnStarFish, World1State.SealSwimAway, World1StarFishClickable));
+                World1State.WaitForClickOnStarFish, World1State.SealSwimAway, World1StarFishClickable, false));
         WorldToStateDictionary[0].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
                 World1State.SealSwimAway, World1State.NextWorld));
         /*
@@ -529,11 +546,12 @@ public class World1 : MonoBehaviour
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             World6State.ChangeScreens, World6State.Intro));
 
-        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
-            World6State.Intro, World6State.E));
 
-        int firstLaterValue = (int)World6State.E;
-        int lastLaterValue = (int)World6State.Ve;
+        int firstLaterValue = (int)World6State.Heb_24;
+        int lastLaterValue = (int)World6State.Heb_37;
+
+        WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
+            World6State.Intro, (World6State)firstLaterValue));
 
         for (int soundIndex = firstLaterValue; soundIndex < lastLaterValue; soundIndex++)
         {
@@ -542,14 +560,14 @@ public class World1 : MonoBehaviour
                 (World6State)soundIndex, (World6State)VOIndex));
             WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     (World6State)VOIndex, (World6State)(soundIndex + 1), (World6State)soundIndex,
-                new List<string>() { "Loud" }, false, true));
+                new List<string>() { "Loud" }, false, true, false, false, 0.2f));
         }
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             (World6State)lastLaterValue, (World6State)(lastLaterValue + 100)));
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
-            (World6State)lastLaterValue, World6State.InTheCave, (World6State)lastLaterValue,
-            new List<string>() { "Loud" }, false, true));
+            (World6State)(lastLaterValue + 100), World6State.InTheCave, (World6State)lastLaterValue,
+            new List<string>() { "Loud" }, false, true, false, false, 0.2f));
 
         /*
 

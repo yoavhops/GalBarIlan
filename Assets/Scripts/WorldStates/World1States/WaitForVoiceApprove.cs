@@ -15,7 +15,7 @@ public class WaitForVoiceApprove : WorldState
     private bool _allowIfLoadEnough;
 
     private bool _firstMicRecived = false;
-    private readonly float _timeSinceLastMic = 1f;
+    private float _timeSinceLastMic = 1f;
     private float _currentTimeSinceLastMic;
 
     private readonly float _failureTime = 3f;
@@ -27,7 +27,7 @@ public class WaitForVoiceApprove : WorldState
     public WaitForVoiceApprove(World1 world1, int myState, int
     NextState, int stateAfterFailure, List<string> correctVoiceAnswers,
         bool allowIfLoadEnough = false, bool onlyLoudness = false,
-        bool useNegativeFeedbackWorldState = false, bool usePositiveFeedbackWorldState = false) :
+        bool useNegativeFeedbackWorldState = false, bool usePositiveFeedbackWorldState = false, float? customeDelay = null) :
     base(world1, myState, NextState)
     {
         if (_ALWAYS_ONLY_LOAD_ENOUGH)
@@ -48,6 +48,11 @@ public class WaitForVoiceApprove : WorldState
         _onlyLoudness = onlyLoudness;
         _failureState = stateAfterFailure;
         _correctVoiceAnswers = correctVoiceAnswers;
+
+        if (customeDelay.HasValue)
+        {
+            _timeSinceLastMic = customeDelay.Value;
+        }
     }
 
     public override void StartPart()

@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 5
+  WorldNumber: 3
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
@@ -3067,6 +3067,10 @@ MonoBehaviour:
   World4Box4SecondBoxClickable: {fileID: 4400293917992470071}
   World4SecondBoxClickable: {fileID: 2037198218837318251}
   GeneralStatesCouldYouRepeatThat: {fileID: 1403399672637391142, guid: bdf2a94cda8e8ff40a13b8915584a0f0,
+    type: 3}
+  GeneralStateNoClickWorld2: {fileID: 1403399672637391142, guid: 777a2304f7eb7284cbfe3e74b2a18b52,
+    type: 3}
+  GeneralStateNoClickWorld4: {fileID: 1403399672637391142, guid: 5f1d272304265d44cb79152d080824fd,
     type: 3}
   GeneralStatesGoodUI: {fileID: 8175858452415903373, guid: 9f7132a103a26c5448b1dbc27b07e9f1,
     type: 3}
@@ -3256,7 +3260,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
@@ -3323,6 +3327,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.57
       objectReference: {fileID: 0}
+    - target: {fileID: 3832133874438510200, guid: 9b66a4d2a6e254d4caff08e18cab3672,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 40b3cfb952b247345bf7e39beb4eaf52, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b66a4d2a6e254d4caff08e18cab3672, type: 3}
 --- !u!4 &1617872368 stripped
@@ -4692,7 +4701,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
@@ -4754,6 +4763,14 @@ PrefabInstance:
       propertyPath: OnAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1522171246}
+    - target: {fileID: 100052732, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c6c66f048b1e3a43a2900ccee41525f, type: 3}
+    - target: {fileID: 419721318, guid: 57721d5986d1b444096e680ad80cc728, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3832133874438510200, guid: 57721d5986d1b444096e680ad80cc728,
         type: 3}
       propertyPath: m_audioClip
