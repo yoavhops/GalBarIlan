@@ -24,10 +24,15 @@ public class WaitForVoiceApprove : WorldState
     private bool _useNegativeFeedbackWorldState = true;
     private bool _usePositiveFeedbackWorldState = true;
 
+    public delegate GameObject CustomFeedBack();
+
+    private CustomFeedBack _customFeedBack;
+
     public WaitForVoiceApprove(World1 world1, int myState, int
     NextState, int stateAfterFailure, List<string> correctVoiceAnswers,
         bool allowIfLoadEnough = false, bool onlyLoudness = false,
-        bool useNegativeFeedbackWorldState = false, bool usePositiveFeedbackWorldState = false, float? customeDelay = null) :
+        bool useNegativeFeedbackWorldState = false, bool usePositiveFeedbackWorldState = false,
+        float? customeDelay = null, CustomFeedBack customFeedBack = null) :
     base(world1, myState, NextState)
     {
         if (_ALWAYS_ONLY_LOAD_ENOUGH)
@@ -48,6 +53,7 @@ public class WaitForVoiceApprove : WorldState
         _onlyLoudness = onlyLoudness;
         _failureState = stateAfterFailure;
         _correctVoiceAnswers = correctVoiceAnswers;
+        _customFeedBack = customFeedBack;
 
         if (customeDelay.HasValue)
         {
@@ -116,7 +122,10 @@ public class WaitForVoiceApprove : WorldState
 
         if (_useNegativeFeedbackWorldState)
         {
-            _world1.ChangeToTempWorldState(new FeedBackWorldState(_world1, -1, _failureState, 3, _world1.GeneralStatesCouldYouRepeatThat));
+            _world1.ChangeToTempWorldState(
+                new FeedBackWorldState(_world1, -1, _failureState,3,
+                    (_customFeedBack == null ? _world1.GeneralStatesCouldYouRepeatThat : _customFeedBack())
+                ));
             return;
         }
 

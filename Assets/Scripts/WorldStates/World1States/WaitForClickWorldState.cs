@@ -27,6 +27,7 @@ public class WaitForClickWorldState : AnimationWorldState
     private void Clicked()
     {
         Success();
+        FeedBackWorldState.KillAllFeedBacks();
     }
 
     public override void FinishState()

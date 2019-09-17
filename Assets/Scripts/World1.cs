@@ -210,6 +210,8 @@ public class World1 : MonoBehaviour
     public GameObject GeneralStateNoClickWorld2;
     public GameObject GeneralStateNoClickWorld4;
     public GameObject GeneralStatesGoodUI;
+    private static int _extraExplainCounter = 0;
+    public GameObject GeneralStateExtraExplain;
 
     [Header("TestSound")]
     public bool ShouldTestFailure;
@@ -342,7 +344,12 @@ public class World1 : MonoBehaviour
         var waitForMegiAnswers = new List<string>() { "Megi", "Mago", "Mango", "margo", "margaret", "Magat" };
         WorldToStateDictionary[1].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     World2State.WaitForMegiVoiceInput, World2State.GoodJobMegi, World2State.ClickMegi,
-                       waitForMegiAnswers, false, false, true, false));
+                       waitForMegiAnswers, false, false, true, false,null, () =>
+            {
+                _extraExplainCounter++;
+                return _extraExplainCounter == 1 ? GeneralStateExtraExplain : GeneralStatesCouldYouRepeatThat;
+            }
+            ));
 
         VoiceAnswersMediator.CreateVoiceAnswer(1, (int)World2State.WaitForMegiVoiceInput, waitForMegiAnswers[0], ShouldTestFailure);
 
@@ -456,7 +463,7 @@ public class World1 : MonoBehaviour
             World4State.RepeatPassword, World4State.WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForFirstPassword, World4State.ClickOnSecondBoxRequest,
-            justSayAgainNoVORepeat ? World4State.WaitForFirstPassword : World4State.RepeatPassword, 
+            World4State.ClickOnFirstBoxRequest, 
             waitForFirstPasswordAnswers, false, false, true, true));
 
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.WaitForFirstPassword, waitForFirstPasswordAnswers[0], ShouldTestFailure);
@@ -475,7 +482,8 @@ public class World1 : MonoBehaviour
             World4State.Box2_RepeatPassword, World4State.Box2_WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.Box2_WaitForFirstPassword, next,
-            justSayAgainNoVORepeat ? World4State.Box2_WaitForFirstPassword : World4State.Box2_RepeatPassword, 
+            World4State.Box2_WaitForClickOnFirstBox,
+            //justSayAgainNoVORepeat ? World4State.Box2_WaitForFirstPassword : World4State.Box2_RepeatPassword, 
             Box2Answer, false, false, true, true));
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box2_WaitForFirstPassword, Box2Answer[0], ShouldTestFailure);
 
@@ -488,7 +496,8 @@ public class World1 : MonoBehaviour
             World4State.Box3_RepeatPassword, World4State.Box3_WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.Box3_WaitForFirstPassword, next,
-            justSayAgainNoVORepeat ? World4State.Box3_WaitForFirstPassword : World4State.Box3_RepeatPassword,
+            World4State.Box3_WaitForClickOnFirstBox,
+            //justSayAgainNoVORepeat ? World4State.Box3_WaitForFirstPassword : World4State.Box3_RepeatPassword,
             Box3Answer, false, false, true, true));
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box3_WaitForFirstPassword, Box3Answer[0], ShouldTestFailure);
 
@@ -501,7 +510,8 @@ public class World1 : MonoBehaviour
             World4State.Box4_RepeatPassword, World4State.Box4_WaitForFirstPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.Box4_WaitForFirstPassword, next,
-            justSayAgainNoVORepeat ? World4State.Box4_WaitForFirstPassword : World4State.Box4_RepeatPassword,
+            World4State.Box4_WaitForClickOnFirstBox,
+            //justSayAgainNoVORepeat ? World4State.Box4_WaitForFirstPassword : World4State.Box4_RepeatPassword,
             Box4Answer, false, false, true, true));
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.Box4_WaitForFirstPassword, Box4Answer[0], ShouldTestFailure);
 
@@ -512,7 +522,8 @@ public class World1 : MonoBehaviour
             World4State.RepeatSecondPassword, World4State.WaitForSecondPassword));
         WorldToStateDictionary[3].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             World4State.WaitForSecondPassword, World4State.SwimAway,
-            justSayAgainNoVORepeat ? World4State.WaitForSecondPassword : World4State.RepeatSecondPassword,
+            World4State.WaitForClickOnSecondBox,
+            //justSayAgainNoVORepeat ? World4State.WaitForSecondPassword : World4State.RepeatSecondPassword,
             waitForSecondPasswordAnswers, false, false, true, true));
 
         VoiceAnswersMediator.CreateVoiceAnswer(3, (int)World4State.WaitForSecondPassword, waitForSecondPasswordAnswers[0], ShouldTestFailure);
@@ -560,14 +571,14 @@ public class World1 : MonoBehaviour
                 (World6State)soundIndex, (World6State)VOIndex));
             WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
                     (World6State)VOIndex, (World6State)(soundIndex + 1), (World6State)soundIndex,
-                new List<string>() { "Loud" }, false, true, false, false, 0.2f));
+                new List<string>() { "Loud" }, false, true, false, false, 0.35f));
         }
 
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToWorldStateKeyValuePair(this,
             (World6State)lastLaterValue, (World6State)(lastLaterValue + 100)));
         WorldToStateDictionary[world].Add(WorldStateFactory.GetIntToVoiceWorldStateKeyValuePair(this,
             (World6State)(lastLaterValue + 100), World6State.InTheCave, (World6State)lastLaterValue,
-            new List<string>() { "Loud" }, false, true, false, false, 0.2f));
+            new List<string>() { "Loud" }, false, true, false, false, 0.35f));
 
         /*
 

@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5d8c58e7e6ab4fbe7d131c741971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldNumber: 3
+  WorldNumber: 0
   WorldStartNumber: 0
   Animator: {fileID: 1522171244}
   RecordingCanvas: {fileID: 1522171247}
@@ -3073,6 +3073,8 @@ MonoBehaviour:
   GeneralStateNoClickWorld4: {fileID: 1403399672637391142, guid: 5f1d272304265d44cb79152d080824fd,
     type: 3}
   GeneralStatesGoodUI: {fileID: 8175858452415903373, guid: 9f7132a103a26c5448b1dbc27b07e9f1,
+    type: 3}
+  GeneralStateExtraExplain: {fileID: 1403399672637391142, guid: d2ed6efdcc8bbba4db68ec9bb83e4f35,
     type: 3}
   ShouldTestFailure: 1
 --- !u!114 &1522171247
@@ -3260,7 +3262,7 @@ PrefabInstance:
     - target: {fileID: 2998580128968396001, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6760906975800789967, guid: 9b66a4d2a6e254d4caff08e18cab3672,
         type: 3}
@@ -4240,7 +4242,7 @@ PrefabInstance:
     - target: {fileID: 720759166960974304, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 720759166960974305, guid: 51a2a8776bfaca14c85867ed386bb6e9,
         type: 3}
@@ -4624,6 +4626,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: bc8737653aacc174a85f026fab050b31, type: 3}
+    - target: {fileID: 3119466209171812913, guid: c8ccb6f482fed1f4f9261d7e2aae3c96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ccb6f482fed1f4f9261d7e2aae3c96, type: 3}
 --- !u!114 &3119466209353858214 stripped
